@@ -26,3 +26,10 @@ body {
   background-size : cover;
   background-position:center;
 }
+
+
+/*side bar content  */
+.sidebar{
+  position: sticky;
+  height: 100%;
+}
