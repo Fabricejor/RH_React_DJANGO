@@ -45,7 +45,7 @@ export default function JobsForm() {
     };
 
     return (
-        <div className='w-full h-[100%]  bg-[rgb(22,91,119)] flex flex-col p-5 justify-start items-center'>
+        <div className='w-full h-[110vh]  bg-[rgb(22,91,119)] flex flex-col p-5 justify-start items-center'>
             <div className="header flex items-start  w-full ">
                 <FaRegCopy className='text-[#165b77] bg-white rounded-[90%] p-[3px] text-2xl' />
                 <h2 className='text-white ml-2'>Create Job Listing</h2>

@@ -1,7 +1,12 @@
 import React from "react";
 import Link from "next/link";
 
-export default function Navbar({}) {
+// Définition des types des props
+interface NavbarProps {
+    openModal?: () => void; // Si `openModal` est une fonction optionnelle
+}
+
+export default function Navbar({ openModal} : NavbarProps) {
     return (
         <header className=" header bg-white px-5 py-3 sticky top-0 z-50 ">
             {" "}
@@ -35,7 +40,7 @@ export default function Navbar({}) {
                     </button>
                     <button type="button"
                         className="header__button px-[10px] py-2 rounded-md text-xs ml-[10px] duration-100 ease-in text-white bg-[#165b77] hover:opacity-[0.8]  "
-                        // onClick={openModal}
+                        onClick={openModal}
                     >
                         Connexion
                     </button>
