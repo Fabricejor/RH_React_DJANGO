@@ -51,7 +51,7 @@ export default function Sidebar() {
                 </ul>
             </div>
             <div className='componant-render ml-1 w-full'>
-                    <JobsForm/>
+                    {/* <JobsForm/> */}
             </div>
         </div>
     )
