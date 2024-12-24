@@ -45,9 +45,9 @@ export default function JobsForm() {
     };
 
     return (
-        <div className='w-full h-[100%]  bg-[#165b77] flex flex-col p-5 justify-start items-center'>
-            <div className="header flex items-center">
-                <FaRegCopy className='text-[#165b77] bg-white rounded-[100%] p-2 text-5xl' />
+        <div className='w-full h-[110vh]  bg-[rgb(22,91,119)] flex flex-col p-5 justify-start items-center'>
+            <div className="header flex items-start  w-full ">
+                <FaRegCopy className='text-[#165b77] bg-white rounded-[90%] p-[3px] text-2xl' />
                 <h2 className='text-white ml-2'>Create Job Listing</h2>
             </div>
             <form onSubmit={handlesubmit} className='flex flex-col w-[60%] mt-2'>
@@ -98,7 +98,7 @@ export default function JobsForm() {
                 </button>
             </form>
 
-          {responseMessage ?<Link href={responseMessage} target='_blank' className="text-white p-2  bg-blue-400 rounded-md mt-1">{responseMessage}</Link> : <p className='mt-2 text-white'>Aucun lien</p>}  
+          {responseMessage ?<Link href={responseMessage} target='_blank' className="text-white p-2  bg-blue-400 rounded-md mt-1">Votre interview est pret</Link> : <p className='mt-2 text-white'>Aucun lien</p>}  
         </div>
     );
 }
