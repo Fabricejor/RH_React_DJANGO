@@ -7,7 +7,7 @@ import Heros from '../layouts/Heros'
 import About from '../layouts/About'
 import Infos from '../layouts/Infos'
 import Footer from '../layouts/Footer'
-import Modals from '../sub/Modal'
+import CompagnyLogin from '../sub/CompagnyLogin'
 export default function Homepage() {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   const openModal = () => {
@@ -23,7 +23,7 @@ export default function Homepage() {
       <Heros/>
       <About/>
       <Infos/>
-      <Modals isOpen={isModalOpen} closeModal={closeModal} />
+      <CompagnyLogin isOpen={isModalOpen} closeModal={closeModal} />
       <Footer/>
     </div>
   )

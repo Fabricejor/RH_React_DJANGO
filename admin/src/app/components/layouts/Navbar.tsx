@@ -17,7 +17,7 @@ export default function Navbar({ openModal} : NavbarProps) {
                 <nav className="header__nav">
                     <ul className="header__nav-list flex">
                         <li className="header__nav-item border-[1.5px] rounded border-[#165b77] ml-[20px] group hover:text-white hover:bg-[#165b77] hover:border-[#165b77]">
-                            <Link href="pages/talents" className="header__nav-link group-hover:text-white text-sm text-[#165b77] font-semibold px-[15px] py-[0px] rounded-sm duration-[1s]  ">
+                            <Link href="/create_talent" className="header__nav-link group-hover:text-white text-sm text-[#165b77] font-semibold px-[15px] py-[0px] rounded-sm duration-[1s]  ">
                                 Talents
                             </Link>
                         </li>

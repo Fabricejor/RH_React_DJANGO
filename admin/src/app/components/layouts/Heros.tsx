@@ -16,7 +16,7 @@ export default function Heros() {
         </div>
     </div>
     <div className="hero__image max-w-[40%] ml-0 ">
-        <img src="hero-image.png" alt="Illustration de talents"/>
+        <img src="Hero-dot-face.jpg" alt="Illustration de talents"/>
     </div>
 </section>
   )

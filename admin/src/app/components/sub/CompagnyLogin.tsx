@@ -6,7 +6,7 @@ interface ModalProps {
     closeModal: () => void; // `closeModal` est une fonction sans arguments
 }
 
-const Modals: React.FC<ModalProps> = ({ isOpen, closeModal }) => {
+const CompagnyLogin: React.FC<ModalProps> = ({ isOpen, closeModal }) => {
     if (!isOpen) return null;
     const router = useRouter()
     
@@ -106,4 +106,4 @@ const Modals: React.FC<ModalProps> = ({ isOpen, closeModal }) => {
     );
 };
 
-export default Modals;
+export default CompagnyLogin;
