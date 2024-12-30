@@ -24,7 +24,7 @@ urlpatterns = [
     path('api/offers/', include('apps.job_offers.urls')),
     path('api/results/', include('apps.similarity.urls')),
     path('api/profiles/', include('apps.profiles.urls')),
-     path('api/pdf/', include('apps.pdf_processing.urls')),
+    path('api/pdf/', include('apps.pdf_processing.urls')),
     path('api/qdrant/', include('apps.qdrant_integration.urls')),
     path('api/ai/', include('apps.ai_integration.urls')),
 ]

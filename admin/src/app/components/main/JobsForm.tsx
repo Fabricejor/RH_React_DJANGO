@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import axios from 'axios';
 import { FaRegCopy } from "react-icons/fa";
-import { log } from 'console';
+
 
 export default function JobsForm() {
     const [formData, setFormData] = useState('');

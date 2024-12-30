@@ -29,9 +29,18 @@ body {
 
 
 /*side bar content  */
-.sidebar{
+.sidebar {
   position: sticky;
-  height: 100%;
+  top: 0; /* ou une autre valeur si vous avez une marge en haut */
+  height: 100vh; /* Important : pour que sticky fonctionne correctement */
+  /* overflow-y: auto; Pour ajouter une barre de défilement interne au sidebar si son contenu est trop long */
+}
+
+/*Pour le composant principal*/
+.componant-render{
+    min-height: 100vh;
+    overflow-y: auto;
+    
 }
 
 .Profilcard{
