@@ -14,7 +14,7 @@ export default function TalentMenu() {
 
     const getAllUsers = async () => {
         try {
-            const response = await axios.get('http://127.0.0.1:8000/api/users/');
+            const response = await axios.get('http://127.0.0.1:8000/api/cvs/');
             setAllUsers(Array.isArray(response.data) ? response.data : []);
         } catch (error) {
             console.error('Erreur API :', error);
@@ -60,12 +60,16 @@ export default function TalentMenu() {
                 {displayedUsers.length > 0 ? (
                     displayedUsers.map((user: any) => (
                         <ProfilCard
-                            key={user.user_id}
-                            user_id={user.user_id}
+                            key={user.candidat}
+                            user_id={user.candidat}
                             nom_prenom={user.nom_prenom}
                             mail={user.mail}
                             numero_tlfn={user.numero_tlfn}
                             profil={user.profil}
+                            competences={user.competences}
+                            resume_cv={user.resume_cv}
+                            disponibilite={user.disponibilite}
+                            domaine_etude={user.domaine_etude}
                         />
                     ))
                 ) : (

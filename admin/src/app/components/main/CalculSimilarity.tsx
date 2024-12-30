@@ -43,7 +43,7 @@ const CalculSimilarity: React.FC = () => {
                         id="offre"
                         className="mt-1 block w-full rounded-md border-2  bg-white py-2 px-3 shadow-sm focus:border-[#165b77] focus:outline-1 focus:outline-[#165b77] focus:ring-[#165b77] sm:text-sm"
                     >
-                        <option>Develloppeur Odoo</option>
+                        <option>Responsable Marketing Digital  pour Pixel Pulse </option>
                         <option>Develloppeur fullstack</option>
                         {/* Options du select */}
                     </select>
