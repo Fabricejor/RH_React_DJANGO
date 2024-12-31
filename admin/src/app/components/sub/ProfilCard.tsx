@@ -1,5 +1,7 @@
 'use client'
 import React, { useState, useEffect } from "react";
+import { useRouter } from 'next/navigation'
+
 
 interface Props {
     user_id: any;
@@ -52,6 +54,13 @@ const ProfilCard = ({ user_id, nom_prenom, mail, numero_tlfn, profil, competence
         choisirImageAleatoire();
     });
 
+    //PArtie redirection vers le profil du candidat
+    const router = useRouter()
+
+    const profilRedirection = () =>{
+        router.push(`dashboard/${user_id}`)
+    }
+
     return (
         <div className="ml-0 bg-white border rounded-lg shadow-md p-5 min-w-[512px] hover:shadow-[#165b77] z-10 ">
             {/* Header: Image, Nom et Expérience */}
@@ -64,10 +73,10 @@ const ProfilCard = ({ user_id, nom_prenom, mail, numero_tlfn, profil, competence
                         className="w-10 h-10 rounded-xl object-cover"
                     />
                     <div className="ml-4">
-                        <h2 className="text-sm font-semibold text-gray-800">{nom_prenom} | {domaine_etude}</h2>
+                        <h2 className="text-xs font-semibold text-gray-800">{nom_prenom} | {domaine_etude}</h2>
                     </div>
                 </div>
-                <button type="button" className="bg-[#165b77] hover:bg-[#163643] text-white px-3 py-2 rounded-xl text-xs font-medium" onClick={() => console.log(user_id)}>
+                <button type="button" className="bg-[#165b77] hover:bg-[#163643] text-white px-3 py-2 rounded-xl text-sm font-medium" onClick={profilRedirection}>
                     voir plus
                 </button>
             </div>
@@ -81,7 +90,7 @@ const ProfilCard = ({ user_id, nom_prenom, mail, numero_tlfn, profil, competence
             {/* Expert In */}
             <div className="flex flex-row w-full justify-between ">
                 <div className="mt-6 w-[50%]">
-                    <h3 className=" text-xs font-semibold  text-gray-800 mb-2">Expert in</h3>
+                    <h3 className=" text-xs font-semibold  text-gray-800 mb-2">Disponibilité</h3>
                     <div className="flex flex-wrap gap-2 text-xs ">
                         {/* {["Python", "Django", "AWS", "Azure", "Kubernetes"].map((skill) => (
                             <span

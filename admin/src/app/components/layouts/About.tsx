@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function About() {
     return (
-        <section className="about px-[40px] py-0 h-auto bg-[#165b77] -mt-20  text-white ">
+        <section className="about px-[40px] py-0 h-auto bg-[#165b77] -mt-24  text-white ">
             <div className="about__container max-w-[1200px] mx-0 my-auto px-0 py-[20px] ">
                 <h2 className="about__title text-2xl text-center mt-[150px]  mb-[30px] italic font-bold">"Qu'est-ce qu'UjuzAi ?"</h2>
                 <div className="about__content flex items-center justify-between">

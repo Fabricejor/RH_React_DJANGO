@@ -59,9 +59,9 @@ export default function CreateTalent() {
                 <main className="main-content mt-10 min-h-[55vh] flex flex-col items-center  gap-3 w-full ">
                     <h1 className="upload-title self-start font-bold text-lg ml-10 ">Upload your resume</h1>
                     <div
-                        className={`upload-area bg-[#E0DFDF] w-[90%] ${pdfUrl ? 'h-screen' : 'h-[100%] '}  flex flex-col items-center justify-center cursor-pointer ${isDragActive ? 'border-[#165b77] border-[2px] bg-[#bddce7]' : 'border-gray-300'}`}  {...getRootProps()}>
+                        className={`upload-area bg-[#E0DFDF] w-[90%] ${pdfUrl ? 'h-screen' : 'h-[50vh] '}  flex flex-col items-center justify-center cursor-pointer ${isDragActive ? 'border-[#165b77] border-[2px] bg-[#bddce7]' : 'border-gray-300'}`}  {...getRootProps()}>
                         {pdfUrl ?
-                            <div className="w-[50vw] h-[50vh] mt-0"> {/* Ajustez la hauteur selon vos besoins */}
+                            <div className="w-[50vw] h-[80vh] mt-0"> {/* Ajustez la hauteur selon vos besoins */}
                                 <iframe src={pdfUrl} width="100%" height="100%" title="PDF Viewer" />
                             </div>
                             :

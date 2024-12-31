@@ -61,7 +61,7 @@ export default function TalentMenu() {
                     displayedUsers.map((user: any) => (
                         <ProfilCard
                             key={user.candidat}
-                            user_id={user.candidat}
+                            user_id={user.id_cv}
                             nom_prenom={user.nom_prenom}
                             mail={user.mail}
                             numero_tlfn={user.numero_tlfn}

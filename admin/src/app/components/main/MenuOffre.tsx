@@ -16,39 +16,20 @@ const MenuOffre: React.FC = () => {
         },
         {
             titre: 'python dev gtp',
-            dateMiseAJour: 'Mis à jour il y a quelques secondes',
-            nombreCandidats: 'Aucun candidat',
+            dateMiseAJour: '30/10/2024',
+            nombreCandidats: '3 talents favorables',
         },
         {
             titre: 'devops',
             dateMiseAJour: 'Mis à jour il y a quelques secondes',
-            nombreCandidats: 'Aucun candidat',
+            nombreCandidats: '1 cancidat favorable',
         },
         {
             titre: 'data scientist',
-            dateMiseAJour: 'Mis à jour il y a quelques secondes',
-            nombreCandidats: 'Aucun candidat',
+            dateMiseAJour: '24/07/2023',
+            nombreCandidats: '36 candidat favorables',
         },
-        {
-            titre: 'test',
-            dateMiseAJour: 'Mis à jour il y a un mois',
-            nombreCandidats: 'Aucun candidat',
-        },
-        {
-            titre: 'python dev gtp',
-            dateMiseAJour: 'Mis à jour il y a quelques secondes',
-            nombreCandidats: 'Aucun candidat',
-        },
-        {
-            titre: 'devops',
-            dateMiseAJour: 'Mis à jour il y a quelques secondes',
-            nombreCandidats: 'Aucun candidat',
-        },
-        {
-            titre: 'data scientist',
-            dateMiseAJour: 'Mis à jour il y a quelques secondes',
-            nombreCandidats: 'Aucun candidat',
-        },
+       
         // Ajoutez d'autres offres ici
     ];
 
