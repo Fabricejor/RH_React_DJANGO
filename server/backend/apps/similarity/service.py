@@ -51,7 +51,10 @@ def calculate_and_save_similarity(id_cv, id_offre):
         similarity = compute_cosine_similarity(cv_vector[0], offer_vector[0])
         print("similarité",similarity)
         result = Result.objects.create(id_cv=cv, id_offre=offer, cosine_similarity=similarity)
-        print("\n\n\nresult :",result)
+        print(f"CV: {cv}, Offer: {offer}")
+        print(f"CV Vector: {cv_vector}, Offer Vector: {offer_vector}")
+        print(f"Similarity: {similarity}")
+        print("\n\n\nresult :",result.id_cv)
         print(f"\nSimilarité calculée et enregistrée avec succès. result id:{result.result_id}")
 
         return result
