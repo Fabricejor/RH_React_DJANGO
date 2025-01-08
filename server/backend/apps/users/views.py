@@ -104,7 +104,7 @@ class RegisterCandidateWithAnalysisView(APIView):
                             'style_analysis': style_analysis,
                             'ai_detection': ai_detection,
                                 'candidate_id':candidate.user_id,
-                                'cv_id': cv.cv_id,
+                                'id_cv': cv.id_cv,
                             }, status=status.HTTP_201_CREATED)
 
         except Exception as e:

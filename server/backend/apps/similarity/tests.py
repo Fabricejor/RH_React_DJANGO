@@ -12,11 +12,11 @@ class SimilarityServicesTests(TestCase):
         # Créer des instances de test
         self.candidate = Candidate.objects.create(nom_prenom="Test User", mail="test@test.com")
         self.cv = CV.objects.create(user=self.candidate, cv_text="Python, data science, machine learning")
-        self.offer = JobOffer.objects.create(titre="Data Scientist", offre_societe="Tech Corp", text_offre="Python, data science, statistics")
+        self.offer = JobOffer.objects.create(titre="Data Scientist", offre_societe="Tech Corp", description="Python, data science, statistics")
 
     def test_calculate_and_save_similarity(self):
         # Tester le calcul de similarité et l'enregistrement
-        result = calculate_and_save_similarity(self.cv.cv_id, self.offer.offer_id)
+        result = calculate_and_save_similarity(self.cv.id_cv, self.offer.id_offre)
         self.assertIsInstance(result, Result)
         self.assertIsNotNone(result.cosine_similarity)
 
@@ -25,7 +25,7 @@ class SimilarityApiTests(TestCase):
              self.client = APIClient()
              self.candidate = Candidate.objects.create(nom_prenom="Test User", mail="test@test.com")
              self.cv = CV.objects.create(user=self.candidate, cv_text="Python, data science, machine learning",competences = ["Python","Data science", "Machine learning"])
-             self.offer = JobOffer.objects.create(titre="Data Scientist", offre_societe="Tech Corp", text_offre="Python, data science, statistics")
+             self.offer = JobOffer.objects.create(titre="Data Scientist", offre_societe="Tech Corp", description="Python, data science, statistics")
              self.result = Result.objects.create(cv=self.cv, offer=self.offer, cosine_similarity=0.8)
     
         def test_filter_results_by_skills(self):
@@ -33,7 +33,7 @@ class SimilarityApiTests(TestCase):
               response = self.client.get(url)
               self.assertEqual(response.status_code, status.HTTP_200_OK)
               self.assertEqual(len(response.data), 1)
-              self.assertEqual(response.data[0]['cv'], str(self.cv.cv_id))
+              self.assertEqual(response.data[0]['cv'], str(self.cv.id_cv))
 
 
         def test_filter_results_by_threshold(self):

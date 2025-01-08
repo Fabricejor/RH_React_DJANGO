@@ -24,7 +24,8 @@ class CVSerializer(serializers.ModelSerializer):
             "commitment",
             "disponibilite",
             "exp_salaire",
-            "domaine_etude"]
+            "domaine_etude",
+            "interview",]
 
     def get_nom_prenom(self, obj):
             try:

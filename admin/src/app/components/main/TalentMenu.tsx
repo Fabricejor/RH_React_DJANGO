@@ -1,14 +1,14 @@
-'use client';
-
+'use client'
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ProfilCard from '../sub/ProfilCard';
 import { FaRegUserCircle } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 
+
 export default function TalentMenu() {
-    const [allUsers, setAllUsers] = useState<any[]>([]); // Stocke tous les utilisateurs
-    const [displayedUsers, setDisplayedUsers] = useState<any[]>([]); // Stocke les utilisateurs à afficher
+    const [allUsers, setAllUsers] = useState<any[]>([]); // Stores all users
+    const [displayedUsers, setDisplayedUsers] = useState<any[]>([]); // Stores users to display
     const [currentPage, setCurrentPage] = useState(1);
     const usersPerPage = 10;
 
@@ -22,8 +22,13 @@ export default function TalentMenu() {
         }
     };
 
+    // Fetch data on component mount (initial render)
     useEffect(() => {
-        // Met à jour les utilisateurs affichés à chaque changement de page ou des données
+        getAllUsers();
+    }, []); // Empty dependency array ensures fetching only once
+
+    useEffect(() => {
+        // Update displayed users whenever allUsers or currentPage changes
         updateDisplayedUsers();
     }, [allUsers, currentPage]);
 
@@ -41,21 +46,24 @@ export default function TalentMenu() {
         setCurrentPage(prevPage => Math.max(prevPage - 1, 1));
     };
 
-
     return (
         <div>
-            <button type='button' className=" ml-[30%] relative flex justify-between items-center rounded-lg border border-blue-500 bg-white px-4 py-2 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-300"
-                onClick={getAllUsers}>
+            <button
+                type='button'
+                className="ml-[30%] relative flex justify-between items-center rounded-lg border border-blue-500 bg-white px-4 py-2 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-300"
+            // No need for onClick as data is fetched on mount
+            >
                 <div className="flex items-center justify-between">
-                    <div className="rounded-lg border-2 border-[#165b77] p-1 mr-2"> {/* Cercle bleu pour l'icône */}
-                        < FaRegUserCircle className='text-[#165b77]' />
+                    <div className="rounded-lg border-2 border-[#165b77] p-1 mr-2">
+                        <FaRegUserCircle className='text-[#165b77]' />
                     </div>
-                    <span className="text-gray-600">Recherche talent        </span>
+                    <span className="text-gray-600">Recherche talent</span>
                 </div>
-                <div className=" ml-3 border-2 rounded-lg border-yellow-400   p-1 "> {/* Loupe à droite */}
+                <div className="ml-3 border-2 rounded-lg border-yellow-400 p-1 ">
                     <FaSearch className='text-yellow-500' />
                 </div>
             </button>
+
             <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-2">
                 {displayedUsers.length > 0 ? (
                     displayedUsers.map((user: any) => (
@@ -70,6 +78,7 @@ export default function TalentMenu() {
                             resume_cv={user.resume_cv}
                             disponibilite={user.disponibilite}
                             domaine_etude={user.domaine_etude}
+                            interview={user.interview}
                         />
                     ))
                 ) : (
@@ -78,7 +87,7 @@ export default function TalentMenu() {
             </div>
 
             {/* Pagination */}
-            {allUsers.length > usersPerPage && ( // n'affiche la pagination que s'il y a plus d'une page
+            {allUsers.length > usersPerPage && (
                 <div className="flex justify-center mt-4">
                     <button
                         onClick={handlePreviousPage}

@@ -20,15 +20,15 @@ class JobOfferCreateViewWithAnalysis(generics.GenericAPIView):
     def post(self, request):
         titre = request.data.get('titre')
         offre_societe = request.data.get('offre_societe')
-        text_offre = request.data.get('text_offre')
-        if not titre or not offre_societe or not text_offre:
+        description = request.data.get('description')
+        if not titre or not offre_societe or not description:
              logger.error("Le titre, le nom de la société et le texte de l'offre sont requis")
-             return Response({'error': 'titre, offre_societe and text_offre are required'}, status=status.HTTP_400_BAD_REQUEST)
+             return Response({'error': 'titre, offre_societe and description are required'}, status=status.HTTP_400_BAD_REQUEST)
         try:
             # 1. Prétraitement du texte de l'offre
-            preprocessed_offre_text = preprocess_text(text_offre)
+            preprocessed_offre_text = preprocess_text(description)
             # 2. Enregistrement de l'offre
-            job_offer = JobOffer.objects.create(titre=titre, offre_societe=offre_societe, text_offre=preprocessed_offre_text)
+            job_offer = JobOffer.objects.create(titre=titre, offre_societe=offre_societe, description=preprocessed_offre_text)
             if not job_offer :
                   logger.error("Erreur lors de l'enregistrement de l'offre d'emploi")
                   return Response({'error': 'Erreur lors de l\'enregistrement de l\'offre d\'emploi'}, status=status.HTTP_400_BAD_REQUEST)

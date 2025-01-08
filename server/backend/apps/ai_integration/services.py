@@ -42,14 +42,14 @@ def generate_questionnaire_google(profil):
         response = chat_session.send_message(
             "Crée un questionnaire de 10 questions en fonction du profil donné. Donne juste les questions, pas besoin de commenter"
         )
-
+        print(profil)
         questions = response.text.split("\n") if response.text else ["Aucune question générée."]
         return questions
     except Exception as e:
         logger.error(f"Erreur lors de la génération du questionnaire: {e}")
         return None
 
-def categorize_skills_with_kano(text_offre):
+def categorize_skills_with_kano(description):
     """
     Utilise Gemini AI pour catégoriser les compétences d'une fiche de poste ou d'un CV selon le modèle de Kano.
     """
@@ -69,7 +69,7 @@ def categorize_skills_with_kano(text_offre):
                 {
                     "role": "user",
                     "parts": [
-                        f"Voici un extrait de l'offre : {text_offre}. "
+                        f"Voici un extrait de l'offre : {description}. "
                         "Catégorise les compétences en fonction du modèle de Kano (Indispensable, Proportionnelle, Attractive, Indifférente). "
                         "Donne juste les compétences classées sans explication ni commentaire. Enléve aussi les notes",
                     ],

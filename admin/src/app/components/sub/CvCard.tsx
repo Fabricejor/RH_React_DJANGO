@@ -31,12 +31,34 @@ export default function CvCard({ user_id, nom_prenom, mail, numero_tlfn, profil,
     const interviewData = {
         videoUrl: 'https://dailyco-recordings.s3.amazonaws.com/mercor-user/fd5a843880/1727180072920?AWSAccessKeyId=AKIAUDSPHZUWR73DATPQ&Signature=CCBapQ3vXsNezBc%2Fs2QItER4T8I%3D&Expires=1736188276', // Chemin vers votre vidéo
         transcript: [
-          { time: '00:00', speaker: 'IA', text: 'Bonjour et bienvenue à cet entretien.' },
-          { time: '00:05', speaker: 'Candidat', text: 'Bonjour, merci de me recevoir.' },
-          { time: '00:10', speaker: 'IA', text: 'Parlez-moi de votre expérience.' },
-          { time: '00:20', speaker: 'Candidat', text: 'J\'ai travaillé pendant 5 ans en tant que chargée de marketing CRM à Worldpay from FIS' },
-          // ... plus de lignes
-        ],
+            { time: '00:00', speaker: 'IA', text: 'Bonjour et bienvenue à cet entretien.', notes: 0 },
+            { time: '00:05', speaker: 'Candidat', text: 'Bonjour, merci de me recevoir.', notes: 90 },
+            { time: '00:10', speaker: 'IA', text: 'Parlez-moi de votre expérience.', notes: 0 },
+            { time: '00:20', speaker: 'Candidat', text: 'J\'ai travaillé pendant 5 ans en tant que chargée de marketing CRM à Worldpay from FIS.', notes: 85 },
+            { time: '00:30', speaker: 'IA', text: 'Pouvez-vous me donner un exemple de projet réussi dans ce rôle ?', notes: 0 },
+            { time: '00:40', speaker: 'Candidat', text: 'Bien sûr. J\'ai lancé une campagne qui a augmenté l\'engagement client de 30 % grâce à l\'automatisation des emails personnalisés.', notes: 95 },
+            { time: '00:50', speaker: 'IA', text: 'Quelles compétences spécifiques pensez-vous être vos points forts ?', notes: 0 },
+            { time: '01:00', speaker: 'Candidat', text: 'Je dirais mes compétences analytiques, ma maîtrise des outils CRM comme Salesforce, et ma capacité à collaborer avec des équipes interfonctionnelles.', notes: 90 },
+            { time: '01:10', speaker: 'IA', text: 'Comment gérez-vous les situations de stress au travail ?', notes: 0 },
+            { time: '01:20', speaker: 'Candidat', text: 'Je prends le temps de prioriser mes tâches et je m\'assure de communiquer efficacement avec mon équipe pour répartir la charge de travail si nécessaire.', notes: 85 },
+            { time: '01:30', speaker: 'IA', text: 'Où vous voyez-vous dans 5 ans ?', notes: 0 },
+            { time: '01:40', speaker: 'Candidat', text: 'Je me vois diriger une équipe CRM ou travailler sur des stratégies de fidélisation client à grande échelle.', notes: 80 },
+            { time: '01:50', speaker: 'IA', text: 'Quels sont vos objectifs professionnels à court terme ?', notes: 0 },
+            { time: '02:00', speaker: 'Candidat', text: 'Mon objectif immédiat est de continuer à développer mes compétences en marketing digital et de contribuer efficacement à la croissance de l\'entreprise.', notes: 85 },
+            { time: '02:10', speaker: 'IA', text: 'Avez-vous des questions pour moi ?', notes: 0 },
+            { time: '02:20', speaker: 'Candidat', text: 'Oui, pourriez-vous m\'en dire plus sur les principaux défis auxquels votre équipe marketing est confrontée actuellement ?', notes: 90 },
+            { time: '02:30', speaker: 'IA', text: 'Passons maintenant à des questions techniques liées à votre domaine.', notes: 0 },
+            { time: '02:35', speaker: 'IA', text: 'Pouvez-vous expliquer comment vous segmentez une base de données clients pour une campagne marketing ?', notes: 0 },
+            { time: '02:45', speaker: 'Candidat', text: 'Je commence par identifier les critères pertinents comme l\'âge, la localisation, ou les préférences d\'achat, puis j\'utilise des outils comme SQL ou les fonctionnalités de segmentation intégrées dans un CRM.', notes: 95 },
+            { time: '02:55', speaker: 'IA', text: 'Quelles métriques utilisez-vous pour évaluer le succès d\'une campagne marketing ?', notes: 0 },
+            { time: '03:05', speaker: 'Candidat', text: 'Je regarde principalement le taux d\'ouverture, le taux de clic, le retour sur investissement (ROI), et les conversions directes générées.', notes: 90 },
+            { time: '03:15', speaker: 'IA', text: 'Si vous deviez optimiser un faible taux d\'ouverture sur une campagne emailing, que feriez-vous ?', notes: 0 },
+            { time: '03:25', speaker: 'Candidat', text: 'Je testerais des objets d\'email plus engageants avec des A/B tests, j\'analyserais les heures d\'envoi, et je m\'assurerais que les emails ne tombent pas dans les spams.', notes: 95 },
+            { time: '03:35', speaker: 'IA', text: 'Pouvez-vous expliquer comment vous priorisez les tâches dans un projet complexe ?', notes: 0 },
+            { time: '03:45', speaker: 'Candidat', text: 'J\'utilise la méthode Eisenhower pour classer les tâches selon leur urgence et importance, et je m\'assure de coordonner avec l\'équipe pour respecter les délais.', notes: 85 },
+            { time: '03:55', speaker: 'IA', text: 'Merci pour ces réponses détaillées. Nous allons conclure cet entretien.', notes: 0 },
+            { time: '04:00', speaker: 'Candidat', text: 'Merci pour votre temps. J\'ai hâte d\'avoir des nouvelles.', notes: 90 }
+          ]
       };
       const experiencesData = [
         {

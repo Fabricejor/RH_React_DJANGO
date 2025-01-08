@@ -13,5 +13,7 @@ class JobOffer(models.Model):
     kano=models.CharField(max_length=255)
     offre_vector = models.TextField()
     entreprise = models.CharField(max_length=255)
+    class Meta:
+        db_table ='offre'
     def _str_(self):
             return f"{self.titre} - {self.entreprise.nom_entreprise}"

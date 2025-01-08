@@ -57,8 +57,8 @@ export default function Sidebar() {
             </div>
             <div className='componant-render ml-1 w-full '>
                 {activeMenu === 'Talents' && <TalentMenu />}
-                {activeMenu === 'jobs' && <JobsForm />}
-                {activeMenu === 'settings' && <MenuOffre />}
+                {activeMenu === 'jobs' && <MenuOffre />}
+                {/* {activeMenu === 'settings' && <MenuOffre />} */}
                 {activeMenu === 'cosin_sim' && <CalculSimilarity />}
                     
             </div>

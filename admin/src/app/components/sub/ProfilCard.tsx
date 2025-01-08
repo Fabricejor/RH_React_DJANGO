@@ -3,6 +3,9 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from 'next/navigation'
 
 
+import {  FaVideo ,FaVideoSlash } from "react-icons/fa6";
+
+
 interface Props {
     user_id: any;
     nom_prenom: string;
@@ -13,6 +16,7 @@ interface Props {
     resume_cv: string;
     disponibilite: string;
     domaine_etude: string;
+    interview:string;
 }
 interface skills {
     image: string;
@@ -20,17 +24,17 @@ interface skills {
 
 
 
-const ProfilCard = ({ user_id, nom_prenom, mail, numero_tlfn, profil, competences, resume_cv, disponibilite, domaine_etude }: Props) => {
+const ProfilCard = ({ user_id, nom_prenom, mail, numero_tlfn, profil, competences, resume_cv, disponibilite, domaine_etude,interview }: Props) => {
     const tab = [
-        { image: "https://img.freepik.com/photos-gratuite/jeune-bel-homme-posant-chapeau_23-2148884336.jpg?t=st=1735558831~exp=1735562431~hmac=d6e03e7e4ee9e0b9030855a57b0ceb859df4f2977bed010b4108b23f079f7175&w=740" },
-        { image: "https://img.freepik.com/photos-premium/memoji-homme-afro-americain-fond-blanc-emoji_826801-6858.jpg?w=740" },
+        // { image: "https://img.freepik.com/photos-gratuite/jeune-bel-homme-posant-chapeau_23-2148884336.jpg?t=st=1735558831~exp=1735562431~hmac=d6e03e7e4ee9e0b9030855a57b0ceb859df4f2977bed010b4108b23f079f7175&w=740" },
+        // { image: "https://img.freepik.com/photos-premium/memoji-homme-afro-americain-fond-blanc-emoji_826801-6858.jpg?w=740" },
         { image: "https://img.freepik.com/photos-gratuite/portrait-adolescente-africaine-visage-souriant-heureux_53876-146757.jpg?t=st=1735559046~exp=1735562646~hmac=23d00b71382fa29a81a1cb7dc7e4705850d42b211e69cecd2393ba37b30fc922&w=740" },
-        { image: "https://img.freepik.com/photos-gratuite/femme-africaine-smiley-boucles-oreilles-dorees_23-2148747979.jpg?t=st=1735559130~exp=1735562730~hmac=20fcf34a37290b231533575abc1ca8df702945c28cc38097593b3f7a8493ffa0&w=360" },
+        // { image: "https://img.freepik.com/photos-gratuite/femme-africaine-smiley-boucles-oreilles-dorees_23-2148747979.jpg?t=st=1735559130~exp=1735562730~hmac=20fcf34a37290b231533575abc1ca8df702945c28cc38097593b3f7a8493ffa0&w=360" },
         { image: "https://img.freepik.com/photos-gratuite/portrait-femme-entrepreneur-peau-sombre-confiante-regard-serieux-porte-lunettes-rondes-chemisier-rouge-va-rencontrer-partenaires-etranger-se-prepare-presenter-societe-isole-blanc_273609-3653.jpg?t=st=1735559202~exp=1735562802~hmac=5e9f9ed797a0e4483dde302bf325029a32ae260ac7e4332913ce6bfbde1a11cd&w=826" },
         { image: "https://img.freepik.com/photos-gratuite/portrait-femme-affaires-confiant-visage-souriant_53876-137693.jpg?t=st=1735559219~exp=1735562819~hmac=86b4a99c46ebdc0a670e444dcc7e4cfb783136ca586c491cf5cf8dfb05dcc0b9&w=740" },
-        { image: "https://img.freepik.com/photos-gratuite/portrait-homme-serieux_23-2148779998.jpg?t=st=1735559234~exp=1735562834~hmac=7c07adcc6a7de618e1d06ca0307b38572729f11fde5ca0f2864cbc35ffe02700&w=360" },
+        // { image: "https://img.freepik.com/photos-gratuite/portrait-homme-serieux_23-2148779998.jpg?t=st=1735559234~exp=1735562834~hmac=7c07adcc6a7de618e1d06ca0307b38572729f11fde5ca0f2864cbc35ffe02700&w=360" },
         { image: "https://img.freepik.com/photos-premium/photo-studio-jeune-homme-affaires-africain-chauve-beau-fond-blanc_251136-84139.jpg?w=360" },
-        { image: "https://img.freepik.com/photos-gratuite/bel-homme-affaires-expression-deprimee_93675-129337.jpg?t=st=1735559532~exp=1735563132~hmac=1bba4e8730f847488aeb5e80f3c3f2cea5f6631bca0bf87ef62b56fa847b9e8f&w=740" },
+        // { image: "https://img.freepik.com/photos-gratuite/bel-homme-affaires-expression-deprimee_93675-129337.jpg?t=st=1735559532~exp=1735563132~hmac=1bba4e8730f847488aeb5e80f3c3f2cea5f6631bca0bf87ef62b56fa847b9e8f&w=740" },
     ];
     const [imageSrc, setImageSrc] = useState("defaultProfil.jpg"); // État pour la source de l'image
     const shuffleArray = (array: string[]) => {
@@ -60,7 +64,7 @@ const ProfilCard = ({ user_id, nom_prenom, mail, numero_tlfn, profil, competence
     const profilRedirection = () =>{
         router.push(`dashboard/${user_id}`)
     }
-
+    console.log(interview)
     return (
         <div className="ml-0 bg-white border rounded-lg shadow-md p-5 min-w-[512px] hover:shadow-[#165b77] z-10 ">
             {/* Header: Image, Nom et Expérience */}
@@ -100,6 +104,7 @@ const ProfilCard = ({ user_id, nom_prenom, mail, numero_tlfn, profil, competence
                                 {skill}
                             </span>
                         ))} */}
+                        {interview === "true" ? <p className="bg-green-400 text-white p-1 rounded-lg"> < FaVideo /></p> : <p className="bg-red-400 text-white p-1 rounded-lg"> <FaVideoSlash /></p>}
                        <p className="bg-green-400 text-white p-1 rounded-lg"> {disponibilite}</p>
                     </div>
                 </div>
@@ -107,7 +112,7 @@ const ProfilCard = ({ user_id, nom_prenom, mail, numero_tlfn, profil, competence
                 {/* Commitment */}
                 <div className="mt-6 flex flex-col">
                     {/* <h3 className="font-semibold text-gray-800 mb-2 text-xs self-end ">Commitment</h3> */}
-                    <h3 className="font-semibold text-gray-800 mb-2 text-xs self-end ">SKILL</h3>
+                    <h3 className="font-semibold text-gray-800 mb-2 text-xs self-end ">SKILLS</h3>
                     <div className="flex gap-4 items-center">
                     {competencesAleatoires.map((competence, index) => (
                     <span

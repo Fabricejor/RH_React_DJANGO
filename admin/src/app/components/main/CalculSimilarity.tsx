@@ -19,7 +19,11 @@ const CalculSimilarity: React.FC = () => {
 
     return (
         <div className="bg-white p-8">
+                <div>
+                    <h2 className='italic text-[#165b77] text-xl font-semibold'> Cosine Similarity</h2>
+                </div>
             <div className="flex space-x-4 mb-8">
+
                 <div className="w-1/2">
                     <label htmlFor="candidat" className="block text-sm font-medium text-gray-700 mb-1">
                         Candidat
@@ -33,7 +37,7 @@ const CalculSimilarity: React.FC = () => {
                         <option>Tous</option>
                         {/* Options du select */}
                     </select>
-                    <p className="text-sm text-gray-500 mt-1">Selectioné au moins un candidat</p>
+                    <p className="text-sm text-gray-500 mt-1">selectionner au moins un candidat</p>
                 </div>
                 <div className="w-1/2">
                     <label htmlFor="offre" className="block text-sm font-medium text-gray-700 mb-1">
@@ -44,10 +48,10 @@ const CalculSimilarity: React.FC = () => {
                         className="mt-1 block w-full rounded-md border-2  bg-white py-2 px-3 shadow-sm focus:border-[#165b77] focus:outline-1 focus:outline-[#165b77] focus:ring-[#165b77] sm:text-sm"
                     >
                         <option>Responsable Marketing Digital  pour Pixel Pulse </option>
-                        <option>Develloppeur fullstack</option>
+                        <option>Développeur fullstack</option>
                         {/* Options du select */}
                     </select>
-                    <p className="text-sm text-gray-500 mt-1">veuillez Selectioné une offre</p>
+                    <p className="text-sm text-gray-500 mt-1">veuillez selectionner une offre</p>
                 </div>
             </div>
 

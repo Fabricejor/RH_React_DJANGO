@@ -17,7 +17,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='CV',
             fields=[
-                ('cv_id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
+                ('id_cv', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
                 ('date_insertion', models.DateTimeField(auto_now_add=True)),
                 ('cv_text', models.TextField()),
                 ('competences', models.JSONField(default=list)),

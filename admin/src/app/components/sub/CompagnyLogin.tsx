@@ -44,7 +44,7 @@ const CompagnyLogin: React.FC<ModalProps> = ({ isOpen, closeModal }) => {
                     />
                 </div>
                 <h2 className="text-xl font-bold text-center mb-6">
-                    Company login
+                    login
                 </h2>
                 <form className="w-full flex flex-col items-center gap-4">
                     <div className="w-full">

@@ -34,25 +34,27 @@ def compute_cosine_similarity(vector1, vector2):
         return 0.0
     return np.dot(vector1, vector2) / (norm1 * norm2)
 
-def calculate_and_save_similarity(cv_id, offer_id):
+def calculate_and_save_similarity(id_cv, id_offre):
     try:
-        cv = CV.objects.get(cv_id=cv_id)
-        offer = JobOffer.objects.get(offer_id=offer_id)
+        cv = CV.objects.get(id_cv=id_cv)
+        offer = JobOffer.objects.get(id_offre=id_offre)
         
         cv_text = cv.cv_text
-        offer_text = offer.text_offre
+        offer_text = offer.description
         
         models = load_models()  # Load models here
         model1, model2, model3 = models  # Unpack the models
 
         cv_vector = np.concatenate([model.encode([cv_text]) for model in (model1, model2, model3)], axis=1)
         offer_vector = np.concatenate([model.encode([offer_text]) for model in (model1, model2, model3)], axis=1)
-    
+        print("vector:",cv_vector[0])
         similarity = compute_cosine_similarity(cv_vector[0], offer_vector[0])
-        result = Result.objects.create(cv=cv, offer=offer, cosine_similarity=similarity)
-        logger.info(f"Similarité calculée et enregistrée avec succès. result id:{result.result_id}")
+        print("similarité",similarity)
+        result = Result.objects.create(id_cv=cv, id_offre=offer, cosine_similarity=similarity)
+        print("\n\n\nresult :",result)
+        print(f"\nSimilarité calculée et enregistrée avec succès. result id:{result.result_id}")
 
         return result
     except Exception as e:
-        logger.error(f"Erreur lors du calcul de similarité: {e}")
+        print(f"\nservices.py Erreur lors du calcul de similarité: {e}")
         raise
