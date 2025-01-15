@@ -61,3 +61,15 @@ class FilterResultsView(generics.ListAPIView):
                  pass
 
         return queryset
+    
+
+class GetResultByOffer(generics.ListAPIView):
+    serializer_class = ResultSerializer
+
+    def get_queryset(self):
+        """
+        Filters results based on the 'id_offre' parameter in the URL.
+        """
+        offer_id = self.kwargs.get('id_offre')  # Access id_offre from URL parameter
+        queryset = Result.objects.filter(id_offre=offer_id)  # Filter by id_offre
+        return queryset

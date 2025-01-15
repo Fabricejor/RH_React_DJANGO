@@ -4,7 +4,8 @@ import { useRouter } from 'next/navigation'
 
 
 import {  FaVideo ,FaVideoSlash } from "react-icons/fa6";
-
+import { FaCheckCircle } from "react-icons/fa";
+import { MdHighlightOff } from "react-icons/md";
 
 interface Props {
     user_id: any;
@@ -16,7 +17,7 @@ interface Props {
     resume_cv: string;
     disponibilite: string;
     domaine_etude: string;
-    interview:string;
+    interview:boolean;
 }
 interface skills {
     image: string;
@@ -64,7 +65,7 @@ const ProfilCard = ({ user_id, nom_prenom, mail, numero_tlfn, profil, competence
     const profilRedirection = () =>{
         router.push(`dashboard/${user_id}`)
     }
-    console.log(interview)
+
     return (
         <div className="ml-0 bg-white border rounded-lg shadow-md p-5 min-w-[512px] hover:shadow-[#165b77] z-10 ">
             {/* Header: Image, Nom et Expérience */}
@@ -104,8 +105,9 @@ const ProfilCard = ({ user_id, nom_prenom, mail, numero_tlfn, profil, competence
                                 {skill}
                             </span>
                         ))} */}
-                        {interview === "true" ? <p className="bg-green-400 text-white p-1 rounded-lg"> < FaVideo /></p> : <p className="bg-red-400 text-white p-1 rounded-lg"> <FaVideoSlash /></p>}
-                       <p className="bg-green-400 text-white p-1 rounded-lg"> {disponibilite}</p>
+                        {interview === true ? <p className="bg-green-400 text-white p-1 rounded-lg" title="entretien disponible"> < FaVideo /></p> : <p className="bg-red-400 text-white p-1 rounded-lg" title="entretien indisponible"> <FaVideoSlash /></p>}
+                       {disponibilite === "disponible" ?<FaCheckCircle className="bg-green-400 text-white text-xl p-1  rounded-lg" title="Disponible"/> : <MdHighlightOff className="bg-red-400 text-white text-xl p-1 rounded-lg" title="Indisponible"/>}
+   
                     </div>
                 </div>
 

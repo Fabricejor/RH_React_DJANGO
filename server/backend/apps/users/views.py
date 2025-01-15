@@ -110,3 +110,4 @@ class RegisterCandidateWithAnalysisView(APIView):
         except Exception as e:
             logger.error(f"Une erreur s'est produite: {e}")
             return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        

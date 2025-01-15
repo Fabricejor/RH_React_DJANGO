@@ -39,22 +39,19 @@ def calculate_and_save_similarity(id_cv, id_offre):
         cv = CV.objects.get(id_cv=id_cv)
         offer = JobOffer.objects.get(id_offre=id_offre)
         
-        cv_text = cv.cv_text
-        offer_text = offer.description
+        cv_text = cv.cv_pretraite
+        offer_text = offer.description_pretraite
         
         models = load_models()  # Load models here
         model1, model2, model3 = models  # Unpack the models
 
         cv_vector = np.concatenate([model.encode([cv_text]) for model in (model1, model2, model3)], axis=1)
         offer_vector = np.concatenate([model.encode([offer_text]) for model in (model1, model2, model3)], axis=1)
-        print("vector:",cv_vector[0])
+        
         similarity = compute_cosine_similarity(cv_vector[0], offer_vector[0])
-        print("similarité",similarity)
+        
         result = Result.objects.create(id_cv=cv, id_offre=offer, cosine_similarity=similarity)
-        print(f"CV: {cv}, Offer: {offer}")
-        print(f"CV Vector: {cv_vector}, Offer Vector: {offer_vector}")
-        print(f"Similarity: {similarity}")
-        print("\n\n\nresult :",result.id_cv)
+        
         print(f"\nSimilarité calculée et enregistrée avec succès. result id:{result.result_id}")
 
         return result

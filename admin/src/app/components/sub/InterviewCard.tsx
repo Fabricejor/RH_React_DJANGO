@@ -44,7 +44,7 @@ const InterviewCard: React.FC<InterviewCardProps> = ({ videoUrl, transcript }) =
     };
 
     return (
-        <div className="bg-white rounded-lg shadow-md p-6">
+        <div className="bg-white rounded-lg shadow-md p-6" id='interview'>
             <div className="relative pb-[56.25%] h-0 overflow-hidden mb-4"> {/* Aspect ratio 16:9 */}
                 <video ref={videoRef} src={videoUrl} controls className="absolute top-0 left-0 w-full h-full" />
             </div>

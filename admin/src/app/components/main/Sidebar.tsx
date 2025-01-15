@@ -43,14 +43,14 @@ export default function Sidebar() {
                 </div>
                 <ul className='pt-2'>
                     {Menus.map((menu,) => {
-                        return (<>
+                        return (
                             <li key={menu.title} className={`  text-white text-xs flex flex-col items-center gap-x-2 cursor-pointer p-2 my-4 hover:bg-[#cce6f0] rounded-md mt-2`} onClick={menu.handleClick} >
                                 <span className='text-lg block  text-[#165b77]' >{menu.icon}</span>
                                 {/* <Link href={"#"} className={`text-base font-medium flex-1 duration-300 text-[#165b77] ${!open && "hidden"}`} >{menu.title}</Link> */}
 
                                 <span className={`text-[10px] font-medium flex-1 duration-300 text-black text-nowrap `} >{menu.title}</span> {/* Remove Link */}
                             </li>
-                        </>)
+                        )
                     })}
 
                 </ul>

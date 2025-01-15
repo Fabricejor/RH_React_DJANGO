@@ -15,7 +15,7 @@ interface WorkExperienceCardProps {
 
 const WorkExperienceCard: React.FC<WorkExperienceCardProps> = ({ experiences }) => {
   return (
-    <div className="bg-white rounded-lg shadow-md p-6">
+    <div className="bg-white rounded-lg shadow-md p-6" id="experience">
       <h2 className="text-2xl font-bold mb-4">Work Experience</h2>
       <div className="flex">
         <div className="w-1/4 pr-6"> {/* Colonne pour le schéma (1/4 de la largeur) */}
