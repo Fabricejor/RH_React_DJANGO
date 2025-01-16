@@ -17,7 +17,7 @@ import MenuOffre from './MenuOffre';
 import CalculSimilarity from './CalculSimilarity';
 
 export default function Sidebar() {
-    const [open, setOpen] = useState(true);// hooks pour connaitre letat du button qui va reduire le sidebar
+    // const [open, setOpen] = useState(true);// hooks pour connaitre letat du button qui va reduire le sidebar
     const [activeMenu, setActiveMenu] = useState('Talents'); // Initial active menu
 
     const Menus = [

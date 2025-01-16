@@ -17,11 +17,19 @@ import Link from 'next/link'
 import ResultCard from './ResultCard'
 import EditOffre from './EditOffre'
 
+interface offreData {
+  titre: string;
+  entreprise: string;
+  type_contrat: string;
+  revenu: number;
+  google_form?: string;
+}
+
 export default function OffreCard() {
   const router = useRouter()
   const { id } = useParams()
   const [result, setResult] = useState<any>(null)
-  const [offre, setOffre] = useState<any>(null)
+  const [offre, setOffre] = useState<offreData | any >(null)
   const [isPopupOpen, setIsPopupOpen] = useState(false); // Popup state
   
 
@@ -71,7 +79,7 @@ export default function OffreCard() {
     <div>
       <div className="container mx-auto w-full p-2">
         {/* En-tête */}
-        <div className='w-full flex justify-between items-center mb-3' onClick={() => router.back()}>
+        <div className='w-full flex justify-between items-center mb-3' onClick={() => router.push("/dashboard")}>
           <IoBackspaceOutline className="bg-[#165b77] hover:bg-[#163643] text-white text-2xl px-1 py-1 rounded-xl  font-medium" />
         </div>
         <div className="flex justify-between items-start mb-3">
@@ -124,7 +132,7 @@ export default function OffreCard() {
         <div className='flex flex-col w-full flex-wrap items-center  '>
           {result.length === 0 ? <p>Aucun résultat pour cette offre</p> :
             result.map((result: any,index :number) => (
-              <div className='w-full h-full'>
+              <div className='w-full h-full'key={index} >
                 <ResultCard
                   key={index}
                   user_id={result.id_cv}
@@ -138,7 +146,7 @@ export default function OffreCard() {
           }
         </div>
       </div>
-      {isPopupOpen && <EditOffre onClose={handleOpenPopup} />} {/* Render JobForm conditionally */}
+      {isPopupOpen && <EditOffre onClose={handleOpenPopup} offre={offre} />} {/* Render JobForm conditionally */}
     </div>
   )
 }
