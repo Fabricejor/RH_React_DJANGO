@@ -10,7 +10,7 @@ import { useDropzone } from 'react-dropzone';
 
 export default function CreateTalent() {
     // Hook pour cconnaitre l'étape du formulaire 
-    const [step, setStep] = useState(1)
+    const [step, setStep] = useState(2)
     const [uploadedFile, setUploadedFile] = useState<File | null>(null);
     const [pdfUrl, setPdfUrl] = useState<string | null>(null); // State pour l'URL Blob
 
@@ -54,14 +54,14 @@ export default function CreateTalent() {
                         <img src="LOGO.png" alt="" />
                     </Link>
                     <h2 className="step-title self-start font-bold text-lg   ml-3 mt-3">Etape {step}</h2>
-                    <ProgressBar progress={60} />
+                    <ProgressBar progress={99} />
                 </header>
-                <main className="main-content mt-10 min-h-[55vh] flex flex-col items-center  gap-3 w-full ">
+                {/* <main className="main-content mt-10 min-h-[55vh] flex flex-col items-center  gap-3 w-full ">
                     <h1 className="upload-title self-start font-bold text-lg ml-10 ">Upload your resume</h1>
                     <div
-                        className={`upload-area bg-[#E0DFDF] w-[90%] ${pdfUrl ? 'h-screen' : 'h-[100%] '}  flex flex-col items-center justify-center cursor-pointer ${isDragActive ? 'border-[#165b77] border-[2px] bg-[#bddce7]' : 'border-gray-300'}`}  {...getRootProps()}>
+                        className={`upload-area bg-[#E0DFDF] w-[90%] ${pdfUrl ? 'h-screen' : 'h-[50vh] '}  flex flex-col items-center justify-center cursor-pointer ${isDragActive ? 'border-[#165b77] border-[2px] bg-[#bddce7]' : 'border-gray-300'}`}  {...getRootProps()}>
                         {pdfUrl ?
-                            <div className="w-[50vw] h-[50vh] mt-0"> {/* Ajustez la hauteur selon vos besoins */}
+                            <div className="w-[50vw] h-[80vh] mt-0">
                                 <iframe src={pdfUrl} width="100%" height="100%" title="PDF Viewer" />
                             </div>
                             :
@@ -76,8 +76,83 @@ export default function CreateTalent() {
                         onClick={handleNext}>
                         NEXT
                     </button>
-                </main>
-
+                </main> */}
+<div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
+      <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg">
+        <button className="flex items-center text-blue-700 mb-4 font-medium">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5 mr-2"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fillRule="evenodd"
+              d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3a1 1 0 00.293.707l2 2a1 1 0 001.414-1.414L11 9.586V7z"
+              clipRule="evenodd"
+            />
+          </svg>
+          Back
+        </button>
+        <h2 className="text-xl font-semibold mb-6">Confirmation des details</h2>
+        <form className="space-y-4">
+          <div className="flex space-x-4">
+            <input
+              type="text"
+              placeholder="Noms"
+              className="flex-1 p-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-300"
+            />
+            <input
+              type="text"
+              placeholder="Prénoms"
+              className="flex-1 p-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-300"
+            />
+          </div>
+          <input
+            type="mail"
+            placeholder="mail"
+            defaultValue="talent@gmail.com"
+            className="w-full p-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-300"
+          />
+          <input
+            type="text"
+            placeholder="Numéro téléphone"
+            defaultValue="(+221) 77 452 44 44"
+            className="w-full p-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-300"
+          />
+          <div className="mt-6">
+            <h3 className="text-lg font-semibold mb-2">Vos meilleurs compétences</h3>
+            <p className="text-sm text-gray-500 mb-4">
+              UjuzaUi utilise des technologies avancées pour connecter talents
+              cachés et opportunités professionnelles, en valorisant équité et
+              innovation.
+            </p>
+            <div className="space-y-4">
+              <input
+                type="text"
+                placeholder="Main skill #1"
+                className="w-full p-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-300"
+              />
+              <input
+                type="text"
+                placeholder="Main skill #2"
+                className="w-full p-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-300"
+              />
+              <input
+                type="text"
+                placeholder="Main skill #3"
+                className="w-full p-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-300"
+              />
+            </div>
+          </div>
+          <div className="flex justify-end mt-6">
+            <button className="py-1 px-4 bg-[#165477] text-white text-lg rounded-lg">
+              Valider
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
             </div>
            
           

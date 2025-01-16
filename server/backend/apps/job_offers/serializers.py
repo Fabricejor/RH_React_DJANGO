@@ -4,4 +4,4 @@ from .models import JobOffer
 class JobOfferSerializer(serializers.ModelSerializer):
     class Meta:
         model = JobOffer
-        fields = ['offer_id', 'text_offre', 'offre_societe', 'titre', 'created_at']
+        fields = ['id_offre','titre','description', 'type_contrat', 'revenu', 'link_interview', 'google_form', 'kano', 'offre_vector', 'entreprise']

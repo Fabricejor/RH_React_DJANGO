@@ -3,6 +3,7 @@ from .models import CV
 from .serializers import CVSerializer
 from rest_framework.response import Response
 from rest_framework import status
+from django.db.models import Prefetch
 
 
 class CVListCreateView(generics.ListCreateAPIView):

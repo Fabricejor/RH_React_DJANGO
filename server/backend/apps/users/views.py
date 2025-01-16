@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from rest_framework import generics
-from .models import Candidate
+from .models import Candidat
 from .serializers import CandidateSerializer
 from rest_framework.response import Response
 from rest_framework import status
@@ -16,11 +16,11 @@ import logging
 logger = logging.getLogger(__name__) 
 
 class CandidateListCreateView(generics.ListCreateAPIView):
-    queryset = Candidate.objects.all()
+    queryset = Candidat.objects.all()
     serializer_class = CandidateSerializer
     
 class CandidateRetrieveUpdateDeleteView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Candidate.objects.all()
+    queryset = Candidat.objects.all()
     serializer_class = CandidateSerializer
 
 
@@ -31,10 +31,10 @@ class CheckCandidateConnexion(generics.GenericAPIView):
         if not mail or not code:
             return Response({'error': 'mail and code are required'}, status=status.HTTP_400_BAD_REQUEST)
         try:
-            candidate = Candidate.objects.get(mail=mail, code=code)
+            candidate = Candidat.objects.get(mail=mail, code=code)
             serializer = CandidateSerializer(candidate)
             return Response(serializer.data, status=status.HTTP_200_OK)
-        except Candidate.DoesNotExist:
+        except Candidat.DoesNotExist:
             return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
 
 
@@ -45,7 +45,7 @@ class GenerateCodeView(generics.GenericAPIView):
         if not mail or not profil:
             return Response({'error': 'mail and profil are required'}, status=status.HTTP_400_BAD_REQUEST)
         try:
-            candidate = Candidate.objects.get(mail=mail)
+            candidate = Candidat.objects.get(mail=mail)
             code = ''.join(random.choices(string.ascii_letters + string.digits, k=6))
             candidate.code = code
             candidate.profil = profil
@@ -53,8 +53,8 @@ class GenerateCodeView(generics.GenericAPIView):
 
             # Envoi de mail (pas implémenté, à faire avec Celery)
             return Response({'message': 'Code généré et envoyé par e-mail', 'code': code}, status=status.HTTP_200_OK)
-        except Candidate.DoesNotExist:
-            return Response({'error': 'Candidate not found'}, status=status.HTTP_404_NOT_FOUND)
+        except Candidat.DoesNotExist:
+            return Response({'error': 'Candidat not found'}, status=status.HTTP_404_NOT_FOUND)
 
  #Option 2
 class RegisterCandidateWithAnalysisView(APIView):
@@ -88,7 +88,7 @@ class RegisterCandidateWithAnalysisView(APIView):
                 #4. Prétraitement du texte
             preprocessed_cv_text = preprocess_text(cv_text)
             # 5. Enregistrement du candidat
-            candidate = Candidate.objects.create(nom_prenom=nom_prenom, mail=mail, numero_tlfn=numero_tlfn)
+            candidate = Candidat.objects.create(nom_prenom=nom_prenom, mail=mail, numero_tlfn=numero_tlfn)
             if not candidate:
                 logger.error("Erreur lors de l'enregistrement du candidat")
                 return Response({'error': 'Erreur lors de l\'enregistrement du candidat'}, status=status.HTTP_400_BAD_REQUEST)
@@ -100,13 +100,14 @@ class RegisterCandidateWithAnalysisView(APIView):
                 return Response({'error': 'Erreur lors de l\'enregistrement du cv'}, status=status.HTTP_400_BAD_REQUEST)
 
             return Response({
-                            'message': 'Candidate and CV registered successfully',
+                            'message': 'Candidat and CV registered successfully',
                             'style_analysis': style_analysis,
                             'ai_detection': ai_detection,
                                 'candidate_id':candidate.user_id,
-                                'cv_id': cv.cv_id,
+                                'id_cv': cv.id_cv,
                             }, status=status.HTTP_201_CREATED)
 
         except Exception as e:
             logger.error(f"Une erreur s'est produite: {e}")
             return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        

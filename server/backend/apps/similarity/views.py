@@ -20,17 +20,17 @@ class ResultRetrieveUpdateDeleteView(generics.RetrieveUpdateDestroyAPIView):
 
 class CalculateSimilarityView(generics.GenericAPIView):
      def post(self, request):
-        cv_id = request.data.get('cv_id')
-        offer_id = request.data.get('offer_id')
-        if not cv_id or not offer_id:
-            logger.error("cv_id and offer_id are required")
-            return Response({'error': 'cv_id and offer_id are required'}, status=status.HTTP_400_BAD_REQUEST)
+        id_cv = request.data.get('id_cv')
+        id_offre = request.data.get('id_offre')
+        if not id_cv or not id_offre:
+            logger.error("id_cv and id_offre are required")
+            return Response({'error': 'id_cv and id_offre are required'}, status=status.HTTP_400_BAD_REQUEST)
         try:
-            result = calculate_and_save_similarity(cv_id, offer_id)
+            result = calculate_and_save_similarity(id_cv, id_offre)
             serializer = ResultSerializer(result)
             return Response(serializer.data, status=status.HTTP_200_OK)
         except Exception as e:
-            logger.error(f"Erreur lors du calcul de la similarité: {e}")
+            print(f"\n view.py Erreur lors du calcul de la similarité: {e}")
             return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
@@ -60,4 +60,16 @@ class FilterResultsView(generics.ListAPIView):
                  logger.error("Erreur lors de la conversion du nombre de résultats")
                  pass
 
+        return queryset
+    
+
+class GetResultByOffer(generics.ListAPIView):
+    serializer_class = ResultSerializer
+
+    def get_queryset(self):
+        """
+        Filters results based on the 'id_offre' parameter in the URL.
+        """
+        offer_id = self.kwargs.get('id_offre')  # Access id_offre from URL parameter
+        queryset = Result.objects.filter(id_offre=offer_id)  # Filter by id_offre
         return queryset
