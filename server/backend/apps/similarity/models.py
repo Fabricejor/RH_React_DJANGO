@@ -6,8 +6,8 @@ import uuid
 
 class Result(models.Model):
     result_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    cv = models.ForeignKey(CV, on_delete=models.CASCADE, related_name='results')
-    offer = models.ForeignKey(JobOffer, on_delete=models.CASCADE, related_name='results')
+    id_cv = models.ForeignKey(CV, on_delete=models.CASCADE, related_name='results',db_column="id_cv")
+    id_offre = models.ForeignKey(JobOffer, on_delete=models.CASCADE, related_name='results',db_column="id_offre")
     cosine_similarity = models.FloatField()
     
     def __str__(self):

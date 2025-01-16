@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'apps.qdrant_integration',
     'apps.ai_integration',
     'apps.pdf_processing',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -57,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'backend.urls'
@@ -86,7 +88,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME', 'rh_db'),
+        'NAME': os.getenv('DB_NAME','ujuzai_db'),
         'USER': os.getenv('DB_USER', 'postgres'),
         'PASSWORD': os.getenv('DB_PASSWORD', 'passer'),
         'HOST': os.getenv('DB_HOST', 'localhost'),
@@ -121,6 +123,8 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
+
+CORS_ALLOW_ALL_ORIGINS = True  # Autorise toutes les origines (pour les tests uniquement)
 
 
 # Static files (CSS, JavaScript, Images)

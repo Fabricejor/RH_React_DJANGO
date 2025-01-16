@@ -1,7 +1,16 @@
+'use client'
 import React from 'react'
 import "../../globals.css"
+import { useRouter } from 'next/navigation'
 
 export default function ConnexionForm() {
+  
+  const router = useRouter()
+ 
+  const redirection = () => {
+    router.push("/dashboard")
+  }
+
   return (
     <div className='flex h-screen bg-blue-50'>
       {/* Conteneur gauche : Formulaire */}
@@ -33,7 +42,7 @@ export default function ConnexionForm() {
             />
           </form>
 
-          <button className='mt-6 w-full bg-yellow-500 text-white py-4 rounded-lg hover:bg-yellow-600'>
+          <button type='submit' className='mt-6 w-full bg-yellow-500 text-white py-4 rounded-lg hover:bg-yellow-600' onClick={redirection}>
             CONNEXION
           </button>
         </div>
