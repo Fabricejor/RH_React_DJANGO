@@ -6,6 +6,7 @@ import { FaFolderPlus } from "react-icons/fa";
 import axios from 'axios';
 import { useRouter } from 'next/navigation'
 
+import Link from 'next/link';
 //autres composants :
 import JobsForm from './JobsForm'; // Import JobForm.tsx
 
@@ -39,12 +40,6 @@ const MenuOffre: React.FC = () => {
         setIsPopupOpen(!isPopupOpen); // Toggle popup visibility
     };
 
-    //Redirections to offre details daizikoulanak 
-     const router = useRouter()
-    const RedirectionOffreDetails = () =>{
-        router.push(`dashboard/offre_details/${Offres[0].id_offre}`)
-
-    } 
     return (
         <div className="p-8 bg-white"> {/* Marge intérieure et fond blanc */}
             <div className="flex justify-between items-center mb-6"> {/* En-tête avec bouton */}
@@ -61,10 +56,11 @@ const MenuOffre: React.FC = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-3"> {/* Grille pour les offres */}
                 {Offres.map((offre, index) => (
-                    <div
+                    <Link 
+                        href={`/compagny/dashboard/offre_details/${offre.id_offre}`}
                         key={index}
                         className="border rounded p-4 shadow-sm hover:shadow-md transition duration-200 cursor-pointer" 
-                        onClick={RedirectionOffreDetails}// Effet de survol
+                        // onClick={RedirectionOffreDetails}// Effet de survol
                     >
                         <div className="flex justify-between items-start">
                             <div>
@@ -85,7 +81,7 @@ const MenuOffre: React.FC = () => {
 
                             </div>
                         </div>
-                    </div>
+                    </Link>
                 ))}
             </div>
             {isPopupOpen && <JobsForm onClose={handleOpenPopup} />} {/* Render JobForm conditionally */}

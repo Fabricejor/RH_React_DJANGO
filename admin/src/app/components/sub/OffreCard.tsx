@@ -79,8 +79,8 @@ export default function OffreCard() {
     <div>
       <div className="container mx-auto w-full p-2">
         {/* En-tête */}
-        <div className='w-full flex justify-between items-center mb-3' onClick={() => router.push("/dashboard")}>
-          <IoBackspaceOutline className="bg-[#165b77] hover:bg-[#163643] text-white text-2xl px-1 py-1 rounded-xl  font-medium" />
+        <div className='w-full flex justify-between items-center  mb-3' >
+          <Link href={'/compagny/dashboard/'} className='rounded-xl'><IoBackspaceOutline className="bg-[#165b77] hover:bg-[#163643] text-white text-2xl px-1 py-1 rounded-xl  font-medium" /></Link>
         </div>
         <div className="flex justify-between items-start mb-3">
           <div className='flex flex-col'>

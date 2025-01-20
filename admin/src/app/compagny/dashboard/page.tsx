@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import Sidebar from '../components/main/Sidebar'
+import Sidebar from '@/app/components/main/Sidebar'
 
 export default function page() {
   return (

@@ -13,29 +13,21 @@ export default function TalentMenu() {
     const [currentPage, setCurrentPage] = useState(1);
     const usersPerPage = 10;
 
-    // const getAllUsers = async () => {
-    //     try {
-    //         const response = await axios.get('http://127.0.0.1:8000/api/cvs/');
-    //         setAllUsers(Array.isArray(response.data) ? response.data : []);
-    //     } catch (error) {
-    //         console.error('Erreur API :', error);
-    //         setAllUsers(["Une erreur est survenue lors de la récupération des utilisateurs."]);
-    //     }
-    // };
+    const getAllUsersCall = async () => {
+        try {
+            const data = await getAllUsers();
+            setAllUsers(Array.isArray(data) ? data : []);
+            
+        } catch (error) {
+            console.error('Erreur API :', error);
+            setAllUsers(["Une erreur est survenue lors de la récupération des utilisateurs."]);
+        }
+    };
 
-    // Fetch data on component mount (initial render)
+    // Fetch data on component mount (initial render) lors de l'appel du composant
     useEffect(() => {
-        const fetchAllusers = async () => {
-            try {
-                const data = await getAllUsers();
-                setAllUsers(Array.isArray(data) ? data : []);
-                
-            }catch (error) {
-                        console.error('Erreur API :', error);
-                        setAllUsers(["Une erreur est survenue lors de la récupération des utilisateurs."]);
-                    }
-        };
-        fetchAllusers();
+        
+        getAllUsersCall();
     }, []); // Empty dependency array ensures fetching only once
 
     useEffect(() => {

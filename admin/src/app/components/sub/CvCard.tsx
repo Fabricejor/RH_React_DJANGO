@@ -1,6 +1,7 @@
 'use client'
 import React, { useState, useEffect } from "react";
 import { useRouter } from 'next/navigation'
+import Link from "next/link";
 
 // icons
 import { IoBackspaceOutline } from "react-icons/io5";
@@ -98,7 +99,7 @@ export default function CvCard({ user_id, nom_prenom, mail, numero_tlfn, profil,
     return (
         <div className="w-full p-4 overflow-x-hidden min-h-full">
             <div className="layout w-full flex flex-row justify-between">
-                <IoBackspaceOutline className="bg-[#165b77] hover:bg-[#163643] text-white text-2xl px-1 py-1 rounded-xl  font-medium" />
+                <Link href={'/compagny/dashboard/'}><IoBackspaceOutline className="bg-[#165b77] hover:bg-[#163643] text-white text-2xl px-1 py-1 rounded-xl  font-medium" /></Link>
                 <button type="button" className="bg-[#165b77] hover:bg-[#163643] text-white px-3 py-2 rounded-xl text-sm font-medium">
                     contact
                 </button>

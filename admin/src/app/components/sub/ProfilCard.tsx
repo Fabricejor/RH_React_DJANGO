@@ -63,7 +63,7 @@ const ProfilCard = ({ user_id, nom_prenom, mail, numero_tlfn, profil, competence
     const router = useRouter()
 
     const profilRedirection = () =>{
-        router.push(`dashboard/${user_id}`)
+        router.push(`/compagny/dashboard/talent_details/${user_id}`)
     }
 
     return (

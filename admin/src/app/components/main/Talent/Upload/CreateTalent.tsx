@@ -1,6 +1,6 @@
 'use client'
 import React, { useState, useCallback } from 'react'
-import ProgressBar from '../sub/ProgressBar'
+import ProgressBar from '@/app/components/sub/ProgressBar';
 //pourl'icone de l'upload	
 import { MdOutlineDriveFolderUpload } from "react-icons/md";
 // pour les redirection
@@ -56,7 +56,7 @@ export default function CreateTalent() {
                     <h2 className="step-title self-start font-bold text-lg   ml-3 mt-3">Etape {step}</h2>
                     <ProgressBar progress={99} />
                 </header>
-                {/* <main className="main-content mt-10 min-h-[55vh] flex flex-col items-center  gap-3 w-full ">
+                <main className="main-content mt-10 min-h-[55vh] flex flex-col items-center  gap-3 w-full ">
                     <h1 className="upload-title self-start font-bold text-lg ml-10 ">Upload your resume</h1>
                     <div
                         className={`upload-area bg-[#E0DFDF] w-[90%] ${pdfUrl ? 'h-screen' : 'h-[50vh] '}  flex flex-col items-center justify-center cursor-pointer ${isDragActive ? 'border-[#165b77] border-[2px] bg-[#bddce7]' : 'border-gray-300'}`}  {...getRootProps()}>
@@ -76,8 +76,8 @@ export default function CreateTalent() {
                         onClick={handleNext}>
                         NEXT
                     </button>
-                </main> */}
-<div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
+                </main>
+{/* <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
       <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg">
         <button className="flex items-center text-blue-700 mb-4 font-medium">
           <svg
@@ -152,7 +152,7 @@ export default function CreateTalent() {
           </div>
         </form>
       </div>
-    </div>
+    </div> */}
             </div>
            
           
