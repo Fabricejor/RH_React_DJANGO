@@ -17,9 +17,9 @@ class CV(models.Model):
     exp_salaire = models.IntegerField(default=0)
     domaine_etude = models.CharField(max_length=255,blank=True, null=True)
     candidat = models.ForeignKey(Candidat, on_delete=models.CASCADE, related_name='cvs', db_column='id_candidat',null=True)
-    interview = models.BooleanField(default=False),
+    interview = models.BooleanField(default=False)
     langue = models.JSONField(default=dict)
-    
+    education = models.JSONField()
     class Meta:
         db_table ='cv_analysis'
         
