@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.postgres.fields import ArrayField
 import uuid
 
 class JobOffer(models.Model):
@@ -11,8 +12,7 @@ class JobOffer(models.Model):
     link_interview = models.TextField()
     google_form = models.TextField()
     kano=models.CharField(max_length=255)
-    offre_vector = models.TextField()
-    entreprise = models.CharField(max_length=255)
+    cv_vector = ArrayField(models.FloatField(), size=1536, null=True)
     class Meta:
         db_table ='offre'
     def _str_(self):
