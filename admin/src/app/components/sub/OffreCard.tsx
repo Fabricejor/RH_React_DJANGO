@@ -16,6 +16,7 @@ import Link from 'next/link'
 //composant resultCard
 import ResultCard from './ResultCard'
 import EditOffre from './EditOffre'
+import Cv_card_loading from '../layouts/Cv_card_loading'
 
 interface offreData {
   titre: string;
@@ -63,17 +64,9 @@ export default function OffreCard() {
       setIsPopupOpen(!isPopupOpen); // Toggle popup visibility
   };
 
-  if (!result) return <><div className='w-full h-full' >
-    <div role="status" className="max-w-full animate-pulse">
-      <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-400 w-48 mb-4"></div>
-      <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-400 max-w-[360px] mb-2.5"></div>
-      <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-400 max-w-[360px] mb-2.5"></div>
-      <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-400 max-w-[330px] mb-2.5"></div>
-      <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-400 max-w-[300px] mb-2.5"></div>
-      <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-400 max-w-[360px]"></div>
-      <span className="sr-only ">Loading...</span>
-    </div>
-  </div></>
+  if (!result) return <>
+    <Cv_card_loading/>
+  </>
 
   return (
     <div>

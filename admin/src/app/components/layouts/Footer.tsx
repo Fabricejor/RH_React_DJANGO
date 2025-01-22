@@ -9,7 +9,7 @@ export default function Footer() {
                 </div>
                 <nav className="footer__nav flex-1 flex justify-center">
                     <ul className="footer__nav-list flex flex-col text-start">
-                        <li className="footer__nav-item ml-[20px]"><Link href="#" className="footer__nav-link text-white text-[0.9rem]">ACCUEIL</Link></li>
+                        <li className="footer__nav-item ml-[20px]"><Link href="/" className="footer__nav-link text-white text-[0.9rem]">ACCUEIL</Link></li>
                         <li className="footer__nav-item ml-[20px]"><Link href="#" className="footer__nav-link text-white text-[0.9rem]">QUI SOMMES-NOUS ?</Link></li>
                         <li className="footer__nav-item ml-[20px]"><Link href="#" className="footer__nav-link text-white text-[0.9rem]">POLITIQUES DE CONFIDENTIALITE</Link></li>
                         <li className="footer__nav-item ml-[20px]"><Link href="#" className="footer__nav-link text-white text-[0.9rem]">CONDITIONS D'UTILISATION</Link></li>

@@ -3,8 +3,8 @@
 import { useRouter, useParams } from 'next/navigation';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import Homepage from '@/app/components/main/Homepage';
 import CvCard from '@/app/components/sub/CvCard';
+import Cv_card_loading from '@/app/components/layouts/Cv_card_loading';
 
 export default function Profil() {
   const router = useRouter();
@@ -24,7 +24,7 @@ export default function Profil() {
   }, [id]);
 
 // ! un composant ux/ui loagind design doit etre rendu ici
-  if (!user) return <div><Homepage/></div>;
+  if (!user) return <div><Cv_card_loading/></div>;
 
   return (
     <>
