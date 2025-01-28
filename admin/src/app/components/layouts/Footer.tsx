@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className="footer bg-[#165b77] px-[20px] py-0 text-white relative">
             <div className="footer__container max-w-[1200px] mx-0 my-auto  px-0 py-[20px] flex justify-between items-center  ">
                  <div className="footer__logo flex items-center">
-                     <img src="LOGO_UJUZAI_fond_sombre.png" className='w-40 mr-3' alt="UjuzAi Logo"/>
+                     <img src="/LOGO_UJUZAI_fond_sombre.png" className='w-40 mr-3' alt="UjuzAi Logo"/>
                 </div>
                 <nav className="footer__nav flex-1 flex justify-center">
                     <ul className="footer__nav-list flex flex-col text-start">
