@@ -1,9 +1,13 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .services import generate_questionnaire_google, categorize_skills_with_kano, detect_ai_generated_text, analyze_text_style
+from .services import generate_questionnaire_google, categorize_skills_with_kano, detect_ai_generated_text, analyze_text_style, autocomplete_cv_info
 import logging
+import tempfile
+import os
+
 logger = logging.getLogger(__name__)
+
 
 class GenerateQuestionnaireView(APIView):
     def post(self, request):
@@ -75,3 +79,29 @@ class AnalyzeTextStyleView(APIView):
         except Exception as e:
             logger.error(f"Erreur lors de l'analyse du style du texte:{e}")
             return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+class AutoCompleteCVView(APIView):
+    def post(self, request):
+        pdf_file = request.FILES.get('pdf_file')
+        if not pdf_file:
+            logger.error("Fichier pdf manquant")
+            return Response({'error': 'PDF file is required'}, status=status.HTTP_400_BAD_REQUEST)
+        try:
+             # Enregistrez le fichier temporairement sur le disque
+             import tempfile
+             with tempfile.NamedTemporaryFile(delete=False, suffix='.pdf') as tmp_file:
+                 for chunk in pdf_file.chunks():
+                     tmp_file.write(chunk)
+                 tmp_file_path = tmp_file.name
+
+             result = autocomplete_cv_info(tmp_file_path)
+             os.unlink(tmp_file_path) # Supprime le fichier temporaire
+             if result:
+                return Response({'result': result}, status=status.HTTP_200_OK)
+             else:
+               logger.error("L'autocompletion a echoué")
+               return Response({'message': 'Autocompletion failed'}, status=status.HTTP_404_NOT_FOUND)
+        except Exception as e:
+             logger.error(f"Erreur lors de l'autocompletion: {e}")
+             return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
