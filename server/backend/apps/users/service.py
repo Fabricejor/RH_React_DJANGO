@@ -4,7 +4,7 @@ from nltk.corpus import stopwords
 import os
 from supabase import create_client, Client
 import logging
-
+from django.core.mail import send_mail
 
 table_name = "candidat"
 logger = logging.getLogger(__name__)
@@ -84,3 +84,16 @@ def delete_supabase_record(table_name, record_id):
      except Exception as e:
          logger.error(f"Erreur lors de la suppression des données dans Supabase dans la table {table_name}: {e}")
          return None
+def send_recommendation_email(recipient, subject, message_body):
+    try:
+        send_mail(
+        subject,
+        message_body,
+       # settings.EMAIL_HOST_USER,  # Utilisez la variable d'environnement pour l'adresse de l'expéditeur
+        [recipient],
+        fail_silently=False,
+    )
+    except Exception as e:
+            logger.error(f"Erreur lors de l'envoi de mail:{e}")
+            return False
+    return True

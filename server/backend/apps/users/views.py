@@ -1,7 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from apps.ai_integration.services import autocomplete_cv_info, analyze_text_style, detect_ai_generated_text
+from apps.ai_integration.services import analyze_text_style, detect_ai_generated_text
 import os
 from .service import get_supabase_client, create_supabase_record, read_supabase_record, update_supabase_record, delete_supabase_record, preprocess_text, send_recommendation_email
 import logging
@@ -149,7 +149,7 @@ class AutoCompleteCVView(APIView):
                      tmp_file.write(chunk)
                  tmp_file_path = tmp_file.name
 
-             result = autocomplete_cv_info(tmp_file_path)
+             result = 0 #autocomplete_cv_info(tmp_file_path)
              os.unlink(tmp_file_path) # Supprime le fichier temporaire
              if result:
                 return Response({'result': result}, status=status.HTTP_200_OK)
