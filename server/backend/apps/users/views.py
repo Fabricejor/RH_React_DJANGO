@@ -1,7 +1,6 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .serializers import CandidateSerializer
 from apps.ai_integration.services import autocomplete_cv_info, analyze_text_style, detect_ai_generated_text
 import os
 from .service import get_supabase_client, create_supabase_record, read_supabase_record, update_supabase_record, delete_supabase_record, preprocess_text, send_recommendation_email
@@ -26,19 +25,15 @@ class CandidateListCreateView(APIView):
              return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     def post(self, request):
-       serializer = CandidateSerializer(data=request.data)
-       if serializer.is_valid():
-           try:
-                data = serializer.validated_data
-                response = create_supabase_record("candidat",data)
+        try:
+                response = create_supabase_record("candidat", data=request.data)
                 if response:
-                     return Response(response, status=status.HTTP_201_CREATED)
+                    return Response(response, status=status.HTTP_201_CREATED)
                 else:
-                   return Response({'message': 'Erreur lors de la creation du candidat'}, status=status.HTTP_400_BAD_REQUEST)
-           except Exception as e:
-                  logger.error(f"Erreur lors de la creation du candidat:{e}")
-                  return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-       return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+                     return Response({'message': 'Erreur lors de la creation du candidat'}, status=status.HTTP_400_BAD_REQUEST)
+        except Exception as e:
+                logger.error(f"Erreur lors de la creation du candidat:{e}")
+                return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 class CandidateRetrieveUpdateDeleteView(APIView):
     def get(self, request, pk):
@@ -54,19 +49,15 @@ class CandidateRetrieveUpdateDeleteView(APIView):
 
 
     def put(self, request, pk):
-         serializer = CandidateSerializer(data=request.data)
-         if serializer.is_valid():
-            try:
-                data = serializer.validated_data
-                response = update_supabase_record(table_name="candidat", record_id=pk, data=data)
-                if response:
-                      return Response(response, status=status.HTTP_200_OK)
-                else:
-                     return Response({'message': 'Erreur lors de la modification du candidat'}, status=status.HTTP_400_BAD_REQUEST)
-            except Exception as e:
-                 logger.error(f"Erreur lors de la modification du candidat:{e}")
-                 return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+         try:
+              response = update_supabase_record(table_name="candidat", record_id=pk, data=request.data)
+              if response:
+                  return Response(response, status=status.HTTP_200_OK)
+              else:
+                   return Response({'message': 'Erreur lors de la modification du candidat'}, status=status.HTTP_400_BAD_REQUEST)
+         except Exception as e:
+              logger.error(f"Erreur lors de la modification du candidat:{e}")
+              return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
     def delete(self, request, pk):
@@ -109,7 +100,7 @@ class GenerateCodeView(APIView):
             data = {"code": code, "profil": profil}
             response = update_supabase_record(table_name="candidat", record_id=mail, data=data)
             if response:
-                # Envoi de mail asynchrone
+                 # Envoi de mail asynchrone
                  email_subject = f"Recommandation pour un profil de {profil}"
                  email_message = f"Voici votre code d'entretien : {code}\n\nRendez-vous sur ce lien pour un entretien"
                  send_recommendation_email(mail, email_subject, email_message)
