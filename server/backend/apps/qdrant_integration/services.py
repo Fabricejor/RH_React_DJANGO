@@ -1,7 +1,7 @@
 import os
 import uuid
 import logging
-from qdrant_client import QdrantClient
+#from qdrant_client import QdrantClient
 from django.conf import settings
 import numpy as np
 
@@ -10,11 +10,11 @@ logger = logging.getLogger(__name__)
 
 def get_qdrant_client():
     """Initialisation du client Qdrant."""
-    client = QdrantClient(
-        url=os.getenv("QDRANT_HOST"),
-        api_key=os.getenv("QDRANT_API_KEY")
-    )
-    return client
+   # client = QdrantClient(
+     #   url=os.getenv("QDRANT_HOST"),
+      #  api_key=os.getenv("QDRANT_API_KEY")
+    #)
+    #return client
 
 def store_vectors_in_qdrant(vectors, names, collection_name="cv_collection"):
     """Stockage des vecteurs dans Qdrant."""
