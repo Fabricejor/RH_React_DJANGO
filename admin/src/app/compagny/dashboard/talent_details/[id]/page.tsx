@@ -39,6 +39,7 @@ export default function Profil() {
         disponibilite={user.disponibilite}
         domaine_etude={user.domaine_etude}
         exp_salaire={user.exp_salaire}
+        exprience={user.exprience}
       />
     </>
   );

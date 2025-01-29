@@ -12,6 +12,7 @@ import Link from 'next/link';
 import React, { useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import Router from 'next/router';
 
 
 interface Experience {
@@ -40,6 +41,7 @@ export default function CreateTalent() {
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
   const [summary, setSummary] = useState<PdfData | null>(null);
   const [isloading, setIsloading] = useState(false);
+  const router = Router;
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
     if (acceptedFiles.length > 0) {
@@ -162,16 +164,19 @@ export default function CreateTalent() {
         numero_tlfn: summary.numero_tlfn,
     };//on sépare les donnés pour la table candidat
 
-    const cvData = {
-        domaine_etude: summary.domaine_etude,
-        experience: summary.experience,
-        langues: summary.langues,
-        resume_cv: summary.resume_cv,
-        competences: summary.competences,
-        cv_text: summary.cv_text,
-        cv_pretraite: summary.cv_pretraite,
-        // ... autres champs si nécessaires pour l'entité CV
-    };
+    interface CvData {
+        domaine_etude: string;
+        experience: Experience[];
+        langues: string[];
+        resume_cv: string;
+        competences: string[];
+        cv_text: string;
+        cv_pretraite: string;
+        date_insertion: string;
+        candidat: string;
+    }
+
+    
 
     try {
         // !Envoi de la requête pour l'utilisateur(Candidat)
@@ -188,9 +193,21 @@ export default function CreateTalent() {
             throw new Error(`Erreur lors de la création de l'utilisateur: ${userResponse.status} - ${JSON.stringify(errorData)}`);
         }
         const userResponseData = await userResponse.json();
-        const userId = userResponseData.id;
+      
+        const cvData: CvData = {
+        domaine_etude: summary.domaine_etude,
+        experience: summary.experience,
+        langues: summary.langues,
+        resume_cv: summary.resume_cv,
+        competences: summary.competences,
+        cv_text: summary.cv_text,
+        cv_pretraite: summary.cv_pretraite,
+        date_insertion: new Date().toISOString().slice(0,10),
+        candidat:userResponseData.user_id,
 
-        cvData.user = userId // Ajoute l'id de l'user au cvData
+        // ... autres champs si nécessaires pour l'entité CV
+    };
+        
 
         // Envoi de la requête pour le CV (seulement si l'utilisateur a été créé)
         const cvResponse = await fetch("http://localhost:8000/api/cvs/", {
@@ -204,17 +221,21 @@ export default function CreateTalent() {
         if (!cvResponse.ok) {
             const errorData = await cvResponse.json();
             throw new Error(`Erreur lors de la création du CV: ${cvResponse.status} - ${JSON.stringify(errorData)}`);
+        }else{
+          console.log("Votre CV a été bien enregistré: " + cvResponse.ok + cvResponse.text);
         }
 
         // Si les deux requêtes réussissent
-        console.log("Utilisateur et CV créés avec succès !");
+        alert("Utilisateur et CV créés avec succès !id:"+cvData.candidat );
+        router.push(`/talent/menu/${cvData.candidat}`);
         // Redirection ou autre action après succès
         // Par exemple : router.push('/confirmation');
+
 
     } catch (error) {
         console.error("Erreur lors de l'envoi des données :", error);
         // Gestion des erreurs, afficher un message à l'utilisateur par exemple.
-        alert("Une erreur est survenue lors de l'envoi des données. Veuillez réessayer.");
+        alert("Une erreur est survenue lors de l'envoi des données. Veuillez réessayer:"+error);
     } finally {
         setIsloading(false); // Fin du chargement, même en cas d'erreur
     }
