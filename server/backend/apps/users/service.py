@@ -5,6 +5,8 @@ import os
 from supabase import create_client, Client
 import logging
 
+
+table_name = "candidat"
 logger = logging.getLogger(__name__)
 
 nltk.download('stopwords', quiet=True) # avoid unwanted download messages

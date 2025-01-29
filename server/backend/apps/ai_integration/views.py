@@ -1,9 +1,8 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .services import generate_questionnaire_google, categorize_skills_with_kano, detect_ai_generated_text, analyze_text_style, autocomplete_cv_info
+from .services import generate_questionnaire_google, categorize_skills_with_kano, detect_ai_generated_text, analyze_text_style
 import logging
-import tempfile
 import os
 
 logger = logging.getLogger(__name__)
@@ -81,10 +80,10 @@ class AnalyzeTextStyleView(APIView):
             return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
-class AutoCompleteCVView(APIView):
-    def post(self, request):
-        pdf_file = request.FILES.get('pdf_file')
-        if not pdf_file:
+# class AutoCompleteCVView(APIView):
+   # def post(self, request):
+    #    pdf_file = request.FILES.get('pdf_file')
+     #   if not pdf_file:
             logger.error("Fichier pdf manquant")
             return Response({'error': 'PDF file is required'}, status=status.HTTP_400_BAD_REQUEST)
         try:
