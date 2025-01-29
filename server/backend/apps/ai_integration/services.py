@@ -1,15 +1,17 @@
-import google.generativeai as genai
 import os
+import time
+import google.generativeai as genai
 import logging
 from django.conf import settings
 import spacy
 from transformers import pipeline
+from supabase import create_client, Client
 
 
 logger = logging.getLogger(__name__)
 
 # Configuration de l'API Gemini
-api_key = ("AIzaSyClXnQlAqKXSdvp_jXAg82OlRow6PAVHI8")
+api_key = os.getenv("GENAI_API_KEY")
 genai.configure(api_key=api_key)
 
 generation_config = {
@@ -22,6 +24,15 @@ model = genai.GenerativeModel(
     model_name="gemini-1.5-pro",
     generation_config=generation_config,
 )
+
+
+def get_supabase_client():
+    """Initialise le client Supabase."""
+    url = os.getenv("SUPABASE_URL")
+    key = os.getenv("SUPABASE_KEY")
+    supabase = create_client(url, key)
+    return supabase
+
 
 def generate_questionnaire_google(profil):
     """
@@ -42,7 +53,7 @@ def generate_questionnaire_google(profil):
         response = chat_session.send_message(
             "Crée un questionnaire de 10 questions en fonction du profil donné. Donne juste les questions, pas besoin de commenter"
         )
-        print(profil)
+
         questions = response.text.split("\n") if response.text else ["Aucune question générée."]
         return questions
     except Exception as e:

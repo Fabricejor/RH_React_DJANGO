@@ -1,28 +1,8 @@
-import re
-import nltk
-from nltk.corpus import stopwords
 import os
 from supabase import create_client, Client
 import logging
 
 logger = logging.getLogger(__name__)
-
-nltk.download('stopwords', quiet=True) # avoid unwanted download messages
-
-def get_stop_words():
-    """Récupère les stopwords français et anglais."""
-    return set(stopwords.words('french') + stopwords.words('english'))
-
-stop_words = get_stop_words()
-
-def preprocess_text(text):
-    """Prétraitement du texte : minuscules, suppression des caractères spéciaux et des stopwords."""
-    text = text.lower()
-    text = re.sub(r'\W+', ' ', text)
-    tokens = text.split()
-    tokens = [word for word in tokens if word not in stop_words]
-    return ' '.join(tokens)
-
 
 def get_supabase_client():
     """Initialise le client Supabase."""
@@ -30,7 +10,6 @@ def get_supabase_client():
     key = os.getenv("SUPABASE_KEY")
     supabase = create_client(url, key)
     return supabase
-
 
 def create_supabase_record(table_name, data):
      try:
@@ -63,7 +42,7 @@ def read_supabase_record(table_name, filters=None, columns="*"):
 def update_supabase_record(table_name, record_id, data):
     try:
         supabase = get_supabase_client()
-        response = supabase.table(table_name).update(data).eq("id_candidat", record_id).execute()
+        response = supabase.table(table_name).update(data).eq("id_entreprise", record_id).execute()
         if response.error:
             logger.error(f"Erreur lors de la mise à jour des données dans Supabase dans la table {table_name}: {response.error}")
             return None
@@ -74,7 +53,7 @@ def update_supabase_record(table_name, record_id, data):
 def delete_supabase_record(table_name, record_id):
      try:
         supabase = get_supabase_client()
-        response = supabase.table(table_name).delete().eq("id_candidat", record_id).execute()
+        response = supabase.table(table_name).delete().eq("id_entreprise", record_id).execute()
         if response.error:
             logger.error(f"Erreur lors de la suppression des données dans Supabase dans la table {table_name}: {response.error}")
             return None
