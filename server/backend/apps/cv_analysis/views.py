@@ -11,8 +11,8 @@ logger = logging.getLogger(__name__)
 
 def get_supabase_client():
     """Initialise le client Supabase."""
-    url = os.getenv("SUPABASE_URL")
-    key = os.getenv("SUPABASE_KEY")
+    url = os.getenv("https://zbpiflnlvdwyvcwzfzug.supabase.co")
+    key = os.getenv("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpicGlmbG5sdmR3eXZjd3pmenVnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzgxODA5NDYsImV4cCI6MjA1Mzc1Njk0Nn0.UXEUqtBQNVVf7ByvYqz-2sP4BuI-Wj07NaYAa9Dw5pk")
     supabase = create_client(url, key)
     return supabase
 

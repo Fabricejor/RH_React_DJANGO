@@ -127,6 +127,7 @@ CORS_ALLOW_ALL_ORIGINS = True  # Autorise toutes les origines (pour les tests un
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+APPEND_SLASH = False
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
