@@ -1,54 +1,61 @@
 'use client'
 import React from 'react'
-import "../../globals.css"
+import "../../../globals.css"
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
+
 
 export default function ConnexionForm() {
   
   const router = useRouter()
  
   const redirection = () => {
-    router.push("/dashboard")
+    router.push("/talent/Upload_Resume")
   }
 
+  // const goToSignUp = () => {
+  //   router.push("/Register")
+  // }
+
   return (
-    <div className='flex h-screen bg-blue-50'>
+    <div className='flex min-h-screen bg-blue-50'>
       {/* Conteneur gauche : Formulaire */}
-      <div className='w-1/2 bg-white flex flex-col justify-between p-10 shadow-lg'>
+      <div className='w-1/2 bg-white flex flex-col justify-between p-6 shadow-lg'>
         <div>
           <div className='flex items-center justify-between mb-6'>
-            <div className='flex items-center space-x-4'>
-              <img src="favicon.png" alt="logo-gtp"  />
-              <span className='text-sm font-semibold text-[#03346E]'>GTP</span>
-              <span className='text-sm font-semibold text-[#03346E]'>RH APP</span>
+            <div className='flex items-center space-x-4 justify-start w-full'>
+              <img src="/LOGO_UJUZAI_HD.png" alt="logo-gtp"  className='w-36 h-auto' />
             </div>
           </div>
           <h1 className='text-2xl font-bold text-[#03346E] mb-2'>
-            Gainde Talent Provider Login page
+            UjuzAI Page de connexion
           </h1>
-          <p className='text-gray-500 mb-8'>A human resources app</p>
+          <p className='text-gray-500 mb-8'>Une application de ressources humaines par Gainde Talent Provider</p>
 
           {/* Formulaire */}
           <form className='space-y-6'>
             <input
               type='email'
               placeholder='email'
-              className='w-full p-4 border border-yellow-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500'
+              className='w-full p-2 border border-yellow-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500'
             />
             <input
               type='password'
               placeholder='Password'
-              className='w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500'
+              className='w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500'
             />
           </form>
 
-          <button type='submit' className='mt-6 w-full bg-yellow-500 text-white py-4 rounded-lg hover:bg-yellow-600' onClick={redirection}>
+          <button type='submit' className='mt-3 w-full bg-yellow-500 text-white py-2 rounded-lg hover:bg-yellow-600' onClick={redirection}>
             CONNEXION
           </button>
+          <p className='text-sm text-gray-500 mt-3'>
+            En cliquant  <Link href={'/Register'} className='text-blue-500 cursor-pointer' >ici</Link> vous acceptez nos conditions d'utilisations.
+          </p>
+          <p className='text-sm text-gray-500 mt-6'>
+            Pas encore inscrit? <Link href={'/Register'} className='text-blue-500 cursor-pointer' >s'inscrire</Link>
+          </p>
         </div>
-        <p className='text-sm text-gray-500 mt-6'>
-          By clicking, you confirm that you agree with our terms & conditions.
-        </p>
       </div>
 
       {/* Conteneur droit : Image avec fond graphique */}

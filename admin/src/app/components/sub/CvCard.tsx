@@ -1,12 +1,14 @@
 'use client'
 import React, { useState, useEffect } from "react";
 import { useRouter } from 'next/navigation'
+import Link from "next/link";
 
 // icons
 import { IoBackspaceOutline } from "react-icons/io5";
 import { IoLibraryOutline } from "react-icons/io5";
 import { FaRegAddressCard } from "react-icons/fa6";
 import { RiLightbulbFlashLine } from "react-icons/ri";
+import { GrUserExpert } from "react-icons/gr";
 import MinNavbar from "./MinNavbar";
 import InterviewCard from "./InterviewCard";
 import WorkExperienceCard from "./WorkExperienceCard";
@@ -22,14 +24,15 @@ interface Props {
     disponibilite: string;
     domaine_etude: string;
     exp_salaire: number;
+    exprience: any ;
 }
 
 
 
-export default function CvCard({ user_id, nom_prenom, mail, numero_tlfn, profil, competences, resume_cv, disponibilite, domaine_etude ,exp_salaire }: Props) {
+export default function CvCard({ user_id, nom_prenom, mail, numero_tlfn, profil, competences, resume_cv, disponibilite, domaine_etude ,exp_salaire ,exprience }: Props) {
    
     const interviewData = {
-        videoUrl: 'https://dailyco-recordings.s3.amazonaws.com/mercor-user/fd5a843880/1727180072920?AWSAccessKeyId=AKIAUDSPHZUWR73DATPQ&Signature=CCBapQ3vXsNezBc%2Fs2QItER4T8I%3D&Expires=1736188276', // Chemin vers votre vidéo
+        videoUrl: 'https://dailyco-recordings.s3.amazonaws.com/mercor-user/345587d681/1718561465127?AWSAccessKeyId=AKIAUDSPHZUWR73DATPQ&Signature=e15T2YHjrmU4%2BJI0N3Sb8JSjvIc%3D&Expires=1738750353', // Chemin vers votre vidéo
         transcript: [
             { time: '00:00', speaker: 'IA', text: 'Bonjour et bienvenue à cet entretien.', notes: 0 },
             { time: '00:05', speaker: 'Candidat', text: 'Bonjour, merci de me recevoir.', notes: 90 },
@@ -98,10 +101,10 @@ export default function CvCard({ user_id, nom_prenom, mail, numero_tlfn, profil,
     return (
         <div className="w-full p-4 overflow-x-hidden min-h-full">
             <div className="layout w-full flex flex-row justify-between">
-                <IoBackspaceOutline className="bg-[#165b77] hover:bg-[#163643] text-white text-2xl px-1 py-1 rounded-xl  font-medium" />
-                <button type="button" className="bg-[#165b77] hover:bg-[#163643] text-white px-3 py-2 rounded-xl text-sm font-medium">
+                <Link href={'/compagny/dashboard/'}><IoBackspaceOutline className="bg-[#165b77] hover:bg-[#163643] text-white text-2xl px-1 py-1 rounded-xl  font-medium" /></Link>
+                <a href={`maito:${mail}`} type="button" className="bg-[#165b77] hover:bg-[#163643] text-white px-3 py-2 rounded-xl text-sm font-medium">
                     contact
-                </button>
+                </a>
             </div>
             <div className="Hero w-full flex flex-col mt-4 ml-8  justify-start">
                 <div className="flex flex-row justify-start items-center">
@@ -109,7 +112,7 @@ export default function CvCard({ user_id, nom_prenom, mail, numero_tlfn, profil,
                         alt="profil image"
                         className="w-12 h-12 rounded-xl object-cover" />
                     <h3 className="text-xl font-bold  ml-4">
-                        {nom_prenom}
+                        {nom_prenom} | {numero_tlfn}
                     </h3>
                 </div>
                 <div className="flex flex-row justify-start items-center mt-2" >
@@ -143,6 +146,15 @@ export default function CvCard({ user_id, nom_prenom, mail, numero_tlfn, profil,
                         {competence}
                     </span>
                 ))}
+                </div>
+                <div className="flex flex-row justify-start items-center mt-2" >
+                    <GrUserExpert  className="text-gray-400" /> 
+                    <h3 className="text-sm font-bold   text-gray-400 ml-4">
+                    Résumé:
+                    </h3>
+                    <h3 className="text-sm font-bold  ml-4">
+                        {resume_cv}
+                    </h3>
                 </div>
             </div>
             <MinNavbar activeSection="someSection"/>

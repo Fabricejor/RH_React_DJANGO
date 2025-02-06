@@ -45,7 +45,7 @@ const RadarChart: React.FC<RadarChartProps> = ({ data, options, plugins }) => {
 
     const combinedOptions = { ...defaultOptions, ...options };
     
-  return <Radar data={data} options={combinedOptions} plugins={plugins} />;
+  return <Radar className='w-full' data={data} options={combinedOptions} plugins={plugins} />;
 };
 
 export default RadarChart;

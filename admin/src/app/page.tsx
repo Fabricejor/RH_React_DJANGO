@@ -1,4 +1,4 @@
-import ConnexionForm from "./components/main/ConnexionForm";
+
 import Homepage from "./components/main/Homepage";
 
 export default function Home() {

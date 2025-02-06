@@ -1,6 +1,7 @@
 'use client'
 import React, { useState, useEffect } from "react";
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation';
+import Link from "next/link";
 
 
 import {  FaVideo ,FaVideoSlash } from "react-icons/fa6";
@@ -59,12 +60,6 @@ const ProfilCard = ({ user_id, nom_prenom, mail, numero_tlfn, profil, competence
         choisirImageAleatoire();
     });
 
-    //PArtie redirection vers le profil du candidat
-    const router = useRouter()
-
-    const profilRedirection = () =>{
-        router.push(`dashboard/${user_id}`)
-    }
 
     return (
         <div className="ml-0 bg-white border rounded-lg shadow-md p-5 min-w-[512px] hover:shadow-[#165b77] z-10 ">
@@ -81,9 +76,9 @@ const ProfilCard = ({ user_id, nom_prenom, mail, numero_tlfn, profil, competence
                         <h2 className="text-xs font-semibold text-gray-800">{nom_prenom} | {domaine_etude}</h2>
                     </div>
                 </div>
-                <button type="button" className="bg-[#165b77] hover:bg-[#163643] text-white px-3 py-2 rounded-xl text-sm font-medium" onClick={profilRedirection}>
+                <Link  href={`/compagny/dashboard/talent_details/${user_id}`} className="bg-[#165b77] hover:bg-[#163643] text-white text-center text-nowrap px-3 py-2 rounded-xl text-sm font-medium" >
                     voir plus
-                </button>
+                </Link>
             </div>
 
             {/* Description */}

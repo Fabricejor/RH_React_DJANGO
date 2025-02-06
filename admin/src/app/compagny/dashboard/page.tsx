@@ -1,9 +1,12 @@
+'use client'
+
 import React from 'react'
-import TalentMenu from '../components/main/TalentMenu'
+import Sidebar from '@/app/components/main/Sidebar'
+
 export default function page() {
   return (
     <div>
-      <TalentMenu/>
+      <Sidebar/>
     </div>
   )
 }

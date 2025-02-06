@@ -12,7 +12,7 @@ interface MinNavbarProps {
 
 const MinNavbar: React.FC<MinNavbarProps> = ({ activeSection }) => {
   const navItems = [
-    { label: 'Interview', href: '#interview', icon: <CiVideoOn /> },
+    { label: 'Entretien', href: '#interview', icon: <CiVideoOn /> },
     { label: 'Experience', href: '#experience', icon: <BiTask /> },
     { label: 'Education', href: '#education', icon: <IoSchoolOutline /> },
   ];

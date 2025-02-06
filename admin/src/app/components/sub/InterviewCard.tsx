@@ -54,7 +54,7 @@ const InterviewCard: React.FC<InterviewCardProps> = ({ videoUrl, transcript }) =
                     className="bg-[#165b77] hover:bg-[#163643] text-white font-bold py-2 px-4 rounded"
                     onClick={() => setShowTranscript(!showTranscript)}
                 >
-                    {showTranscript ? "Hide Transcript" : "Show More"}
+                    {showTranscript ? "voiz moins" : "Voir plus"}
                 </button>
             </div>
 
@@ -77,17 +77,17 @@ const InterviewCard: React.FC<InterviewCardProps> = ({ videoUrl, transcript }) =
                     ))}
                 </div>
             )}
-            <div className="p-4 flex flex-row w-full justify-around mt-10 "> {/* Ajout de padding avec Tailwind */}
-                <div className='flex flex-row justify-start'>
+            <div className="p-4 flex flex-row w-full items-center justify-around mt-10 "> {/* Ajout de padding avec Tailwind */}
+                <div className='flex flex-col  w-1/2 justify-center'>
                     <h1 className="text-2xl font-bold mb-4 text-nowrap">Evaluation Radar</h1>
                     <div className="w-full h-96 "> {/* Définition de la taille avec Tailwind et centrage*/}
                         <RadarChart data={data} options={options} />
                     </div>
                 </div>
-                <div className='flex flex-col items-center'>
+                <div className='flex flex-col w-1/2 items-center justify-center'>
                     <h1 className="text-2xl font-bold mb-4 text-nowrap">Note Globale</h1>
                     {/* <div className="w-full h-full"> Définition de la taille avec Tailwind et centrage */}
-                    <span className='font-semibold text-2xl self-center ml-6 p-4 rounded-full  bg-green-100   text-green-800'> 86 % </span>
+                    <span className='font-semibold text-6xl self-center ml-6 p-4 rounded-full  bg-green-100   text-green-800'> 86 % </span>
                     {/* </div> */}
                 </div>
             </div>

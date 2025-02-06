@@ -122,11 +122,11 @@ export default function JobsForm({ onClose }: JobsFormProps) {
                 </button>
                 <div className="header flex items-start w-full ">
                     <FaRegCopy className='text-[#165b77] bg-white rounded-[90%] p-[3px] text-2xl' />
-                    <h2 className='text-white ml-2'>Create Job Listing</h2>
+                    <h2 className='text-white ml-2'>Creation d'une Offre</h2>
 
                 </div>
                 <form onSubmit={handlesubmit} className='flex flex-col w-[100%] mt-2'>
-                    <label className='text-white text-base'>Job title</label>
+                    <label className='text-white text-base'>Titre Offre</label>
                     <input
                         className='w-full rounded-lg py-1 px-2'
                         type="text"
@@ -136,7 +136,7 @@ export default function JobsForm({ onClose }: JobsFormProps) {
                         onChange={e => setJobTitle(e.target.value)}
                         required
                     />
-                    <label className='text-white text-base'>Compagny name</label>
+                    <label className='text-white text-base'>Nom Entreprise</label>
                     <input
                         className='w-full rounded-lg py-1 px-2'
                         type="text"
@@ -157,7 +157,7 @@ export default function JobsForm({ onClose }: JobsFormProps) {
                         required
                     />
 
-                    <label className='text-white text-base mt-4'>Hourly rate</label>
+                    <label className='text-white text-base mt-4'>Rémunération</label>
                     <input
                         className='w-full rounded-lg py-1 px-2'
                         type="number"
@@ -169,7 +169,7 @@ export default function JobsForm({ onClose }: JobsFormProps) {
                         required
                     />
 
-                    <label className='text-white text-base mt-2'>Commitment Type</label>
+                    <label className='text-white text-base mt-2'>Type de Contrat</label>
                     <select
                         className='w-full rounded-lg py-2 px-2'
                         name='Commitment Type'
@@ -184,7 +184,7 @@ export default function JobsForm({ onClose }: JobsFormProps) {
                         <option value="Stage">Stage</option>
                         <option value="Freelance">Freelance</option>
                     </select>
-                    <label className='text-white text-base mt-4'>Google form</label>
+                    <label className='text-white text-base mt-4'>Lien Google form</label>
                     <input
                         className='w-full rounded-lg py-0 px-3'
                         type="text"
@@ -212,16 +212,10 @@ export default function JobsForm({ onClose }: JobsFormProps) {
                                 type="submit"
                                 disabled={isLoading}
                             >
-                                <p className='mr-1'>{isLoading ? 'Envoi en cours...' : 'Generate Interview'}</p>
+                                <p className='mr-1'>{isLoading ? 'Envoi en cours...' : 'Générer Entretien'}</p>
                                 <IoMdSend />
                             </button>}
-                        {/* <button
-                        title='Creating jobs'
-                        className='mt-8 py-1 px-1 bg-[#e1ac0c] text-white rounded-lg'
-                        type="submit"
-                    >
-                        {isLoading ? 'Envoi en cours...' : 'or Upload (.pdf)'}
-                    </button> */}
+                        
 
                     </div>
                 </form>

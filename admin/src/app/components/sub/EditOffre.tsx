@@ -65,12 +65,12 @@ export default function EditOffre({ onClose, offre }: JobsFormProps) {
                 </button>
                 <div className="header flex items-start w-full ">
                     <FaRegCopy className='text-[#165b77] bg-white rounded-[90%] p-[3px] text-2xl' />
-                    <h2 className='text-white ml-2'>Modification de {offre.id_offre}</h2>
+                    <h2 className='text-white ml-2'>Modification de {offre.titre}</h2>
                 </div>
                 <form onSubmit={handleSubmit} className='flex flex-col w-[100%] mt-2'> {/* Add onSubmit handler */}
                     <div className='flex flex-row gap-1 items-center'>
                         <div className='flex flex-col w-full'>
-                            <label className='text-white text-base'>Job title</label>
+                            <label className='text-white text-base'>Titre Offre</label>
                             <input
                                 className='w-full rounded-lg py-1 px-2'
                                 type="text"
@@ -83,7 +83,7 @@ export default function EditOffre({ onClose, offre }: JobsFormProps) {
                             />
                         </div>
                         <div className='flex flex-col w-full'>
-                            <label className='text-white text-base'>Compagny name</label>
+                            <label className='text-white text-base'>Nom Entreprise</label>
                             <input
                                 className='w-full rounded-lg py-1 px-2'
                                 type="text"
@@ -115,7 +115,7 @@ export default function EditOffre({ onClose, offre }: JobsFormProps) {
                     <div className='flex flex-row gap-1 items-center'>
                         <div className='flex flex-col w-full'>
 
-                            <label className='text-white text-base mt-4'>Hourly rate</label>
+                            <label className='text-white text-base mt-4'>Rémunération</label>
                             <input
                                 className='w-full rounded-lg py-1 px-2'
                                 type="number"
@@ -129,7 +129,7 @@ export default function EditOffre({ onClose, offre }: JobsFormProps) {
                         </div>
                         <div className='flex flex-col w-full'>
 
-                            <label className='text-white text-base mt-4'>Commitment Type</label>
+                            <label className='text-white text-base mt-4'>Type de Contrat</label>
                             <select
                                 className='w-full rounded-lg py-2 px-2'
                                 name='type_contrat'
@@ -164,7 +164,7 @@ export default function EditOffre({ onClose, offre }: JobsFormProps) {
                             disabled={isLoading}
                             onClick={handleSubmit}
                         >
-                            <p className='mr-1'>{isLoading ? <ClipLoader color="white" loading={isLoading} size={20} /> : 'Update'}</p>
+                            <p className='mr-1'>{isLoading ? <ClipLoader color="white" loading={isLoading} size={20} /> : 'Mettre à jour'}</p>
                             <IoMdSend />
                         </button>
                     </div>
