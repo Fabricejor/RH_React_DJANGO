@@ -20,7 +20,7 @@ const CompagnyLogin: React.FC<ModalProps> = ({ isOpen, closeModal }) => {
         console.log('Email:', email);
         console.log('Password:', password);
 
-        router.push("/dashboard")
+        router.push("/compagny/dashboard")
         // You can add your authentication logic here
         // For example, you can make an API call to your backend to authenticate the user
     }
@@ -44,7 +44,7 @@ const CompagnyLogin: React.FC<ModalProps> = ({ isOpen, closeModal }) => {
                     />
                 </div>
                 <h2 className="text-xl font-bold text-center mb-6">
-                    login
+                    Connexion 
                 </h2>
                 <form className="w-full flex flex-col items-center gap-4">
                     <div className="w-full">
@@ -66,7 +66,7 @@ const CompagnyLogin: React.FC<ModalProps> = ({ isOpen, closeModal }) => {
                             htmlFor="password"
                             className="block font-bold mb-1"
                         >
-                            Password
+                            mot de passe
                         </label>
                         <input
                             type="password"
@@ -78,7 +78,7 @@ const CompagnyLogin: React.FC<ModalProps> = ({ isOpen, closeModal }) => {
                             href="#"
                             className="block text-right text-[#165b77] text-sm mt-2"
                         >
-                            forgot password
+                            s'inscrire
                         </a>
                     </div>
                     <button
@@ -86,7 +86,7 @@ const CompagnyLogin: React.FC<ModalProps> = ({ isOpen, closeModal }) => {
                         className="w-full bg-[#165b77] text-white py-3 rounded-md hover:bg-[#16343f]"
                         onClick={Checkconnexion}
                     >
-                        Login
+                        connexion
                     </button>
                     <button
                         type="button"
@@ -97,7 +97,7 @@ const CompagnyLogin: React.FC<ModalProps> = ({ isOpen, closeModal }) => {
                             alt="Google Logo"
                             className="w-5"
                         />
-                        login with Google
+                        connexion avec Google
                     </button>
                 </form>
             </div>

@@ -37,7 +37,7 @@ export default function Sidebar() {
                     // onClick={() => setOpen(!open)}
                 /> */}
                 <div className="infline-flex">
-                    <img src="LOGO.png" alt="logo" className={`w-[1.8rem] rounded cursor-pointer   block float-left mr-2 duration-500 `} />
+                    <img src="/LOGO.png" alt="logo" className={`w-[1.8rem] rounded cursor-pointer   block float-left mr-2 duration-500 `} />
                     {/* <FaArtstation className={`bg-amber-300 text-3xl rounded cursor-pointer   block float-left mr-2 duration-500 ${open && "rotate-[360deg]"} `} /> */}
                     {/* <h1 className={`text-[#165b77] origin-left font-bold text-lg ${!open && "scale-0 hidden"}`} >JuzAi</h1> */}
                 </div>

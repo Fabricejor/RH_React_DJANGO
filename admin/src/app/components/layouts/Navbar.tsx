@@ -12,12 +12,12 @@ export default function Navbar({ openModal} : NavbarProps) {
             {" "}
             <div className="header__container flex items-center justify-between max-w-[1200px] mx-auto my-0 px-[20px] py-0">
                 <div className="header__logo flex items-center">
-                    <img src="/LOGO_UJUZAI_HD.png" className="w-[80px] mr-[10px]" alt="UjuzAi Logo" />
+                    <img src="/LOGO_UJUZAI_HD.png" loading="lazy" className="w-[80px] mr-[10px]" alt="UjuzAi Logo" />
                 </div>
                 <nav className="header__nav">
                     <ul className="header__nav-list flex">
                         <li className="header__nav-item border-[1.5px] rounded border-[#165b77] ml-[20px] group hover:text-white hover:bg-[#165b77] hover:border-[#165b77]">
-                            <Link href="/create_talent" className="header__nav-link group-hover:text-white text-sm text-[#165b77] font-semibold px-[15px] py-[0px] rounded-sm duration-[1s]  ">
+                            <Link href="/connexion" className="header__nav-link group-hover:text-white text-sm text-[#165b77] font-semibold px-[15px] py-[0px] rounded-sm duration-[1s]  ">
                                 Talents
                             </Link>
                         </li>

@@ -5,6 +5,7 @@ import ProfilCard from '../sub/ProfilCard';
 import { FaRegUserCircle } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 import { getAllUsers } from '@/app/services/services';
+import Profil_card_Loading from '../layouts/Profil_card_Loading';
 
 
 export default function TalentMenu() {
@@ -13,29 +14,21 @@ export default function TalentMenu() {
     const [currentPage, setCurrentPage] = useState(1);
     const usersPerPage = 10;
 
-    // const getAllUsers = async () => {
-    //     try {
-    //         const response = await axios.get('http://127.0.0.1:8000/api/cvs/');
-    //         setAllUsers(Array.isArray(response.data) ? response.data : []);
-    //     } catch (error) {
-    //         console.error('Erreur API :', error);
-    //         setAllUsers(["Une erreur est survenue lors de la récupération des utilisateurs."]);
-    //     }
-    // };
+    const getAllUsersCall = async () => {
+        try {
+            const data = await getAllUsers();
+            setAllUsers(Array.isArray(data) ? data : []);
 
-    // Fetch data on component mount (initial render)
+        } catch (error) {
+            console.error('Erreur API :', error);
+            setAllUsers(["Une erreur est survenue lors de la récupération des utilisateurs."]);
+        }
+    };
+
+    // Fetch data on component mount (initial render) lors de l'appel du composant
     useEffect(() => {
-        const fetchAllusers = async () => {
-            try {
-                const data = await getAllUsers();
-                setAllUsers(Array.isArray(data) ? data : []);
-                
-            }catch (error) {
-                        console.error('Erreur API :', error);
-                        setAllUsers(["Une erreur est survenue lors de la récupération des utilisateurs."]);
-                    }
-        };
-        fetchAllusers();
+
+        getAllUsersCall();
     }, []); // Empty dependency array ensures fetching only once
 
     useEffect(() => {
@@ -75,7 +68,7 @@ export default function TalentMenu() {
                 </div>
             </button>
 
-            <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-2">
+            <div className="mt-4 w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-2">
                 {displayedUsers.length > 0 ? (
                     displayedUsers.map((user: any) => (
                         <ProfilCard
@@ -93,7 +86,26 @@ export default function TalentMenu() {
                         />
                     ))
                 ) : (
-                    <p>Aucun utilisateur trouvé.</p>
+                    <div className='flex'>
+                    <div className="  w-full ">
+                        {/* <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-2"> Utilisation de flex */}
+                            {[...Array(6)].map((_, index) => (
+                                <div key={index} className="flex  w-full flex-row"> {/* Définir la largeur pour 2 par ligne */}
+                                    <Profil_card_Loading />
+                                </div>
+                            ))}
+                        {/* </div> */}
+                    </div>
+                    <div className="  w-full">
+                        {/* <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-2"> Utilisation de flex */}
+                            {[...Array(6)].map((_, index) => (
+                                <div key={index} className="flex  w-full flex-row"> {/* Définir la largeur pour 2 par ligne */}
+                                    <Profil_card_Loading />
+                                </div>
+                            ))}
+                        {/* </div> */}
+                    </div>
+                    </div>
                 )}
             </div>
 
