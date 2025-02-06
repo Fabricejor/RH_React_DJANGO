@@ -44,7 +44,7 @@ const MenuOffre: React.FC = () => {
         <div className="p-8 bg-white"> {/* Marge intérieure et fond blanc */}
             <div className="flex justify-between items-center mb-6"> {/* En-tête avec bouton */}
                 <div>
-                    <h2 className="text-xl font-semibold">Offres</h2>
+                    <h2 className="text-xl font-semibold">Mes Offres</h2>
                     <p className="text-gray-500">Vous pouvez créer des offres ici et les partager avec les candidats.</p>
                 </div>
                 <button type='button'

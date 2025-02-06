@@ -32,7 +32,7 @@ interface Props {
 export default function CvCard({ user_id, nom_prenom, mail, numero_tlfn, profil, competences, resume_cv, disponibilite, domaine_etude ,exp_salaire ,exprience }: Props) {
    
     const interviewData = {
-        videoUrl: 'https://dailyco-recordings.s3.amazonaws.com/mercor-user/fd5a843880/1727180072920?AWSAccessKeyId=AKIAUDSPHZUWR73DATPQ&Signature=CCBapQ3vXsNezBc%2Fs2QItER4T8I%3D&Expires=1736188276', // Chemin vers votre vidéo
+        videoUrl: 'https://dailyco-recordings.s3.amazonaws.com/mercor-user/345587d681/1718561465127?AWSAccessKeyId=AKIAUDSPHZUWR73DATPQ&Signature=e15T2YHjrmU4%2BJI0N3Sb8JSjvIc%3D&Expires=1738750353', // Chemin vers votre vidéo
         transcript: [
             { time: '00:00', speaker: 'IA', text: 'Bonjour et bienvenue à cet entretien.', notes: 0 },
             { time: '00:05', speaker: 'Candidat', text: 'Bonjour, merci de me recevoir.', notes: 90 },

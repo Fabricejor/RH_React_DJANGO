@@ -12,7 +12,7 @@ export default function Navbar({ openModal} : NavbarProps) {
             {" "}
             <div className="header__container flex items-center justify-between max-w-[1200px] mx-auto my-0 px-[20px] py-0">
                 <div className="header__logo flex items-center">
-                    <img src="/LOGO_UJUZAI_HD.png" className="w-[80px] mr-[10px]" alt="UjuzAi Logo" />
+                    <img src="/LOGO_UJUZAI_HD.png" loading="lazy" className="w-[80px] mr-[10px]" alt="UjuzAi Logo" />
                 </div>
                 <nav className="header__nav">
                     <ul className="header__nav-list flex">

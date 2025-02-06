@@ -36,6 +36,7 @@ export default function pages() {
         domaine_etude={user.domaine_etude}
         exp_salaire={user.exp_salaire}
         experience={user.experience}
+        commitment={user.commitment}
         />
     </>
   )

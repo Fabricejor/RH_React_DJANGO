@@ -28,9 +28,9 @@ export default function ConnexionForm() {
             </div>
           </div>
           <h1 className='text-2xl font-bold text-[#03346E] mb-2'>
-            Ujuz AI Login page
+            UjuzAI Page de connexion
           </h1>
-          <p className='text-gray-500 mb-8'>A human resources app by Gainde Talent Provider</p>
+          <p className='text-gray-500 mb-8'>Une application de ressources humaines par Gainde Talent Provider</p>
 
           {/* Formulaire */}
           <form className='space-y-6'>
@@ -50,10 +50,10 @@ export default function ConnexionForm() {
             CONNEXION
           </button>
           <p className='text-sm text-gray-500 mt-3'>
-            By clicking, you confirm that you agree with our terms & conditions.
+            En cliquant  <Link href={'/Register'} className='text-blue-500 cursor-pointer' >ici</Link> vous acceptez nos conditions d'utilisations.
           </p>
           <p className='text-sm text-gray-500 mt-6'>
-            Don't Have an account? <Link href={'/Register'} className='text-blue-500 cursor-pointer' >Sign up</Link>
+            Pas encore inscrit? <Link href={'/Register'} className='text-blue-500 cursor-pointer' >s'inscrire</Link>
           </p>
         </div>
       </div>

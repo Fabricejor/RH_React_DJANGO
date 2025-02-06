@@ -1,4 +1,5 @@
 'use client'
+import { useRouter } from 'next/navigation';
 import ProgressBar from '@/app/components/sub/ProgressBar';
 //pourl'icone de l'upload	
 
@@ -12,7 +13,7 @@ import Link from 'next/link';
 import React, { useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import Router from 'next/router';
+
 
 
 interface Experience {
@@ -41,7 +42,7 @@ export default function CreateTalent() {
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
   const [summary, setSummary] = useState<PdfData | null>(null);
   const [isloading, setIsloading] = useState(false);
-  const router = Router;
+  const router = useRouter(); // Utiliser useRouter à l'intérieur du composant fonctionnel
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
     if (acceptedFiles.length > 0) {
@@ -71,7 +72,7 @@ export default function CreateTalent() {
     }
 
     const genAI = new GoogleGenerativeAI(API_KEY);
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
 
 
     const reader = new FileReader();
@@ -90,8 +91,8 @@ export default function CreateTalent() {
                   Extrait les informations suivantes du contenu PDF, puis fournis le resultat au format JSON sans faire de markdown renvoie uniquement ces valeurs sans formattage, et sans aucun texte supplementaire:
                   -nom_prenom est le nom complet que tu retrouvera dans le pdf
                   -mail est le mail que tu retrouvera dans le pdf si il existe
-                  -numero_tlfn est le numero de telephone dans le pdf si il existe 
-                  -cv_text est le contenu du cv dans le pdf (tous le texte du pdf) sans '\n'
+                  -numero_tlfn est le numero de telephone dans le pdf si il existe (pas plus de 20 charactere soite prend un seul numero ou réduis les espaces) 
+                  -cv_text est le contenu du cv dans le pdf (tous le texte du pdf) identfie bien les mots en les séparants par des espaces'
                   -cv_pretraite est le contenu du cv pretraite dans le pdf c'est a dire le cv_text mais sans les ponctuations et les mots vides (les articles)et sans majiscule
                   -competences est une liste de competences dans le pdf chaque competence devra etre synthetisé/résumé en minimum un mot et maximum deux ou trois mots sans de mots vide
                   -domaine_etude qui soit apparaitra clairement soite devra etre synthetisé a partir de l'education trouvé dans le pdf
@@ -224,10 +225,10 @@ export default function CreateTalent() {
         }else{
           console.log("Votre CV a été bien enregistré: " + cvResponse.ok + cvResponse.text);
         }
-
+        const cv =  await cvResponse.json();
         // Si les deux requêtes réussissent
         alert("Utilisateur et CV créés avec succès !id:"+cvData.candidat );
-        router.push(`/talent/menu/${cvData.candidat}`);
+        router.push(`/talent/menu/${cv.id_cv}`);
         // Redirection ou autre action après succès
         // Par exemple : router.push('/confirmation');
 
@@ -289,6 +290,7 @@ export default function CreateTalent() {
             <p>Email: {summary?.mail}</p>
             <p>Numéro de teléphone: {summary?.numero_tlfn}</p>
             <p>Domaine d'étude: {summary?.domaine_etude}</p>
+            <p>Résume: {summary?.resume_cv}</p>
             <h3>Expériences:</h3>
             <ul className="experiences-list"> {/* Ajoute une classe à la liste */}
         {summary?.experience.map((exp, index) => (
@@ -300,7 +302,7 @@ export default function CreateTalent() {
       </ul>
             <p>Competences: {summary?.competences.join(',')}</p>
             <p>Langues: {summary?.langues.join(', ')}</p>
-            <p>Résume: {summary?.resume_cv}</p>
+
             <button type='button' 
             className='next-button flex items-center justify-center w-[30%] py-2 bg-[#165b77] rounded-md text-white' 
             disabled={isloading}

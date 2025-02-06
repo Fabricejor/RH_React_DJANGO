@@ -94,7 +94,7 @@ const CalculSimilarity: React.FC = () => {
   return (
     <div className="bg-white p-8">
       <div>
-        <h2 className='italic text-[#165b77] text-xl font-semibold'> Cosine Similarity</h2>
+        <h2 className='italic text-[#165b77] text-xl font-semibold'> Évaluation de la compatibilité candidat-offre</h2>
       </div>
 
       {/* MultiSelect for CVs */}
@@ -144,7 +144,7 @@ const CalculSimilarity: React.FC = () => {
             onClick={handleSubmit}
             className="bg-[#165b77]  text-white text-base font-medium py-2 px-4 rounded-xl flex flex-row items-center justify-between  hover:bg-teal-500 transition duration-200"
           >
-            Submit
+            Valider
           </button>
         </div>
       </div>
@@ -154,7 +154,7 @@ const CalculSimilarity: React.FC = () => {
       {/* Display Results */}
       <div className='flex flex-col'>
         <div className="flex justify-between items-center mb-4">
-          <h3 className="text-lg font-medium">Voici les résultat</h3>
+          <h3 className="text-lg font-medium">Voici les résultats</h3>
           <span className="text-green-600 hover:text-green-900 text-sm font-medium">
             <IoMdOptions />
           </span>
@@ -173,15 +173,11 @@ const CalculSimilarity: React.FC = () => {
                       <p className="text-sm text-gray-500 truncate">{result.mail}</p>
                     </div>
                     <div>
-                      {parseFloat((result.cosine_similarity * 100).toFixed(2)) > 60 ?
-                        <span className="inline-flex items-center rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800">
-                          {(result.cosine_similarity * 100).toFixed(2)}%
-                        </span>
-                        :
+                      
                         <span className="inline-flex items-center rounded-full bg-red-200 px-2.5 py-0.5 text-xs font-medium text-red-600">
-                          {(result.cosine_similarity * 100).toFixed(2)}%
+                          {(result.cosine_similarity )}
                         </span>
-                      }
+                      
   
                     </div>
                     <div className='button-container'>
@@ -195,7 +191,7 @@ const CalculSimilarity: React.FC = () => {
               ))}
             </ul>)
             :
-            <p>Aucun résultats pour le moment</p>
+            <p>Aucun résultat pour le moment</p>
         )}
       </div>
     </div>

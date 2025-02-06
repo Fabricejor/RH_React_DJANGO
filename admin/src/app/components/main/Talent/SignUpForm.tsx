@@ -63,7 +63,7 @@ export default function SignUpForm() {
                     <h1 className='text-2xl font-bold text-[#03346E] mb-2'>
                         Ujuz AI Sign Up page
                     </h1>
-                    <p className='text-gray-500 mb-4'>A human resources app by Gainde Talent Provider</p>
+                    <p className='text-gray-500 mb-4'>Une application de ressources humaines par Gainde Talent Provider</p>
 
                     {/* Formulaire */}
                     <form className='space-y-3' onSubmit={Register}>
